@@ -1,0 +1,43 @@
+.side-header-2 {
+    background: #012348;
+    padding: 1rem;
+    gap: 1rem;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.mat-mdc-outlined-button.mat-mdc-button-base {
+    height: 40px !important;
+}
+.mat-mdc-outlined-button {
+    padding: 0px 24px;
+    margin: 5px;
+}
+
+.save-lists {
+    display: flex;
+    justify-content: space-between;
+    background: #0123480D 0% 0% no-repeat;
+    border-radius: 8px;
+    padding: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sl-box-i {
+    font-size: 25px;
+    color: #F36C1C;
+}
+.address-title {
+    margin-bottom: 6px;
+    color: #202020;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.addaddresss{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+}

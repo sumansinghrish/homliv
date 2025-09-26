@@ -1,0 +1,47 @@
+<div>
+    <div class="side-header-2">
+        <div class="row">
+            <div class="col-lg-2 col-2">
+                <div class="dialog-back-f" mat-dialog-close>
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+            <div class="col-lg-9 col-9">
+                <div class="text-center">
+                    <h4 class="select-title-h">Saved Address</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mat-typography p-3">
+    <div class="auth-form-wrapper mt-4">
+        <div class="text-center align-items-center justify-content-center mt-4 p-3" *ngIf="savedLocationData.length<1">
+            <strong> Saved location not available</strong>
+        </div>
+        <div class="save-lists" *ngFor="let location of savedLocationData; let i=index;">
+            <div class="sl-box" (click)="selecedLocation(location)">
+                <img src="assets/image/allicon/select_lo.png" alt="icon" class="img-fluid">
+            </div>
+            <div (click)="selecedLocation(location)">
+                <!-- <div class="address-title">Business Name 1</div> -->
+                <p>{{location.address}}</p>
+            </div>
+            <div class="sl-box-i">
+                <i class="bi bi-three-dots-vertical" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu">
+                    <!-- <li><a class="dropdown-item" (click)="editLocation(location)">Edit</a></li> -->
+                    <li><a *ngIf="Addresstype!=1" class="dropdown-item" (click)="editaddress(location)">Edit</a></li>
+                    <li><a *ngIf="Addresstype==1" class="dropdown-item" (click)="editLocation(location)">Edit</a></li>
+
+                    <!-- <li><a class="dropdown-item" (click)="deleteLocation(location)">Delete</a></li> -->
+                  </ul>
+            </div>
+        </div>
+        <div class="addaddresss">
+            <button mat-flat-button *ngIf="Addresstype!==1" color="primary" class="w-100" (click)="addAddress()">+ Add New Address</button>
+            <button mat-flat-button *ngIf="Addresstype==1" color="primary" class="w-100" (click)="selectLocation(1)">+ Add New Address</button>
+        </div>
+        
+    </div>
+</div>

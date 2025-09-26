@@ -1,0 +1,44 @@
+<div mat-dialog-title>
+    
+    <div class="dialog-back" mat-dialog-close>
+        <i class="bi bi-x-lg"></i>
+    </div>
+    
+    <div class="dialog-logo-img text-center">
+        <img src="assets/image/pop_up_logo.png" alt="logo" class="img-fluid">
+    </div>
+</div>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="updateMobilePhone">
+    <div class="auth-form-wrapper">
+        <div class="auth-head ">
+            <h4 mat-dialog-close>Enter New Number</h4>
+        </div>
+
+
+        <div class="custom-auth-input mb-5">
+            <label>Mobile Number</label>
+            
+            <div class="custom-auth-input mb-1">
+                <mat-form-field class="w-100" appearance="outline">
+                    <span matPrefix class="input-group-text">+966 <i class="bi bi-caret-down-fill"></i> </span>
+
+                    <input type="text" matInput class="w-100 textField" (input)="onInputChange($event)" pattern="[0-9]*" minlength="7" maxlength="15" placeholder="Enter Mobile Number"  formControlName="mobileNumber" />
+                </mat-form-field>
+            </div>
+            <div *ngIf="submitted && f['mobileNumber'].errors" class="text-danger">
+                <div *ngIf="f['mobileNumber'].errors['required']">
+                  Mobile Number is required
+                </div>  
+            </div>
+
+        </div>
+
+        <div class="action-btn">
+            <button mat-flat-button color="primary" class="w-100" (click)="Updatenumber()" >Proceed</button>
+        </div>
+
+    </div>
+
+</form>
+</mat-dialog-content>

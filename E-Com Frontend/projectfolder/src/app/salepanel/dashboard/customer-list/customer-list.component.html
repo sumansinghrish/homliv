@@ -1,0 +1,405 @@
+<div class="container-fluid">
+    <div class="customerList">
+        <div class="mb-2 padding-20 d-flex gap-2 align-items-center">
+            <img src="assets/image/back_black.png" alt="" class="bck-btn" routerLink="/salepanel/dashboard">
+            <h3 class="aiwa-title">Customer List</h3>
+        </div>
+        <div class="form-group">
+            <form class="example-form">
+                <div class="search-header">
+                    <div class="search-input position-relative">
+                        <i class="bi bi-search"></i>
+                        <input type="text" class="form-control w-100" placeholder="Search Buyer" (keyup)="applyFilter($event)">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="tabMenu">
+        <ul class="nav customNavbar nav-pills mb-3" id="pills-tab" role="tablist">
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="all-home-tab" data-bs-toggle="pill" data-bs-target="#all-home"
+                    type="button" role="tab" aria-controls="all-home" aria-selected="true"
+                    (click)="onTabChanged(1)">All</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin"
+                    type="button" role="tab" aria-controls="pills-admin" aria-selected="false"
+                    (click)="onTabChanged(2)">Added By Admin</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-organic-tab" data-bs-toggle="pill" data-bs-target="#pills-organic"
+                    type="button" role="tab" aria-controls="pills-organic" aria-selected="false"
+                    (click)="onTabChanged(3)">Organic</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-salesPerson-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-salesPerson" type="button" role="tab" aria-controls="pills-salesPerson"
+                    aria-selected="false" (click)="onTabChanged(4)">Added By Sales
+                    Person</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-pendingProfile-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-pendingProfile" type="button" role="tab" aria-controls="pills-pendingProfile"
+                    aria-selected="false" (click)="onTabChanged(5)">Pending
+                    Profile</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent"   >
+            <div class="tab-pane fade show active" id="all-home" role="tabpanel" aria-labelledby="all-home-tab"
+                tabindex="0">
+                <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card" (click)="click(item)">
+                        <div class="w-100">
+                            <div class="defineUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button *ngIf = "item?.isAllDocumentsUploaded" (click)="placeOrder(item)">Place
+                                        Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item.phoneNumber}} </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab" tabindex="0">
+                <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card" (click)="click(item)">
+                        <div class="w-100">
+                            <div class="defineUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button (click)="placeOrder(item)">Place
+                                        Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item?.phoneNumber}} </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-organic" role="tabpanel" aria-labelledby="pills-organic-tab"
+                tabindex="0">  <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card" (click)="click(item)">
+                        <div class="w-100">
+                            <div class="defineUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button (click)="placeOrder(item)">Place
+                                        Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item?.phoneNumber}} </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr> -->
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address ?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+            <div class="tab-pane fade" id="pills-salesPerson" role="tabpanel" aria-labelledby="pills-salesPerson-tab"
+                tabindex="0">  <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card" (click)="click(item)">
+                        <div class="w-100">
+                            <div class="defineUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button (click)="placeOrder(item)" >Place
+                                        Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item?.phoneNumber}} </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address ?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+            <div class="tab-pane fade" id="pills-pendingProfile" role="tabpanel"
+                aria-labelledby="pills-pendingProfile-tab" tabindex="0">  <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card" (click)="click(item)">
+                        <div class="w-100">
+                            <div class="defineUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button (click)="placeOrder(item)">Place
+                                        Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item?.phoneNumber}} </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address ?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-salesPerson" role="tabpanel" aria-labelledby="pills-salesPerson-tab"
+                tabindex="0">
+                <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card">
+                        <div class="w-100" (click)="click(item)">
+                            <div class="defin
+                            eUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button (click)="placeOrder(item)">Place
+                                        Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item?.phoneNumber}} </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address ?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-pendingProfile" role="tabpanel"
+                aria-labelledby="pills-pendingProfile-tab" tabindex="0">
+                <div class="customTabpaneshow" *ngFor=" let item of customerListData">
+                    <div class="card">
+                        <div class="w-100" (click)="click(item)">
+                            <div class="defineUser">
+                                <div class="userOrder">
+                                    <div class="avtar-circle">
+                                        <img *ngIf="item.profileImg" [src]="item.profileImg" class="img-fluid" />
+                                        <img *ngIf="!item.profileImg" src="assets/image/sales-icon/profile_info.png"
+                                            class="img-fluid">
+
+                                    </div>
+                                    <div class="name">
+                                        <p>{{item.name  ? item.name :'N/A'}}</p>
+                                        <span>{{item.channelId?item.channelId:'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="btnPlace">
+                                    <button *ngIf = "!item?.isAllDocumentsUploaded" (click)="placeOrder(item)">Place Order</button>
+                                </div>
+                            </div>
+                            <div class="userDetail">
+                                <table class="table">
+                                    <tr>
+                                        <td>Customer ID</td>
+                                        <td>{{item.userId ?item.userId:'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Type</td>
+                                        <td>{{item.addedType? item.addedType:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classification</td>
+                                        <td>{{item.classification ?item.classification:'N/A'}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>{{item?.phoneNumber}} </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="addressDetail">
+                                <span>Address</span>
+                                <p>{{item.address?.address ?item.address?.address:'N/A'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,385 @@
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0px;
+
+    @media screen and (max-width:576px) {
+        padding:0;
+    }
+
+    .aiwa-title {
+        font-size: 25px;
+        margin-bottom: 0px;
+
+        @media screen and (max-width:576px) {
+            font-size: 18px;
+            margin-bottom: 0px;
+            line-height: 28px;
+        
+        }
+    }
+    
+    .bck-btn {
+        height: 22px;
+    }
+    .cmn-button-2 {
+        border: none;
+        padding:0px;
+    }
+    .cmn-button-2 img {
+        height: 50px;
+    }
+}
+.category-panel{
+    padding: 20px 0px 70px;
+
+    @media screen and (max-width:576px) {
+        padding: 15px 0 0;
+    }
+}
+
+.suggestions-lists {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    .grid-box {
+        margin:0px 8px 30px;
+    }
+    figure {
+        height: 190px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0px;
+        color: #4A4A4A;
+    }
+  
+    .p-title {
+        color: #B7B7B7;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+    .title-product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .p-sar {
+        color: #E03A00;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    ul {
+        display: flex;
+        color: #F2994A;
+    }
+    .p-rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .btn-outline-dark {
+        padding: 6px 27px;
+        border: 1px solid #F2994A;
+        color: #F36C1C;
+        border-radius: 5px;
+        background-color: #fff;
+        font-weight: 600;
+    }
+    .btn-outline-dark:hover {
+        background: #F2994A;
+        color: #fff !important;
+    }
+    figure img {
+        height: 80%;
+        width: 80%;
+        object-fit: contain;
+    }
+    .product-img {
+        position: relative;
+        background: rgba(255,255,255,.4196078431);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .unit-grid {
+        position: absolute;
+        bottom: 10px;
+        background: rgba(224,58,0,.1490196078) 0% 0% no-repeat;
+        border-radius: 5px;
+        color: #e03a00;
+        font-size: 13px;
+        padding: 4px 9px;
+    }
+    
+}
+
+.buyerPlaceorder {
+    background: #0123480D 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 20px 0;
+
+    @media screen and (max-width:576px) {
+        padding:10px 0;
+    }
+
+    // .userBio{
+    //     @media screen and (max-width:441px) {
+    //         overflow: scroll;
+    //     }
+    // }
+    .placeorderUserdetail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width:576px) {
+            justify-content: start !important;
+        }
+
+        .salesUserimgmain{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+
+            .salesUserimg{
+                width: 90px;
+                height:90px;
+                border-radius: 50%;
+                overflow: hidden;
+    
+                img{
+                    width: 100%;
+                    height:100%;
+                }
+    
+                @media screen and (max-width:576px) {
+                    width: 40px;
+                    height:40px;
+                    
+                        img{
+                            width: 100%;
+                            height:100%;
+                        }
+                }
+            }
+
+            img{
+                width: 100%;
+                height:100%;
+            }
+
+            @media screen and (max-width:576px) {
+                width: 60px;
+                height:60px;
+                
+                    img{
+                        width: 100%;
+                        height:100%;
+                    }
+            }
+
+            @media screen and (max-width:430px) {
+                width: 40px;
+                height:40px;
+            }
+        }
+        
+        .name {
+            margin-left: 20px;
+            @media screen and (max-width:577px) {
+                margin-left: 10px;
+                p{
+                    font-size: 15px !important;
+                    line-height: 25px !important;
+                }
+
+                span{
+                    font-size: 14px !important;
+                    line-height: 24px !important;
+                }
+            }
+
+            p {
+                font-size: 20px;
+                color: #202020;
+                opacity: 1;
+                line-height: 30px;
+                font-weight: 600;
+                margin-bottom: 0px;
+            }
+
+            span {
+                color: #4A4A4A;
+                text-transform: capitalize;
+                opacity: 1;
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+    }
+
+    .common-grid {
+        margin: 0px 0px 0px 25px;
+
+        @media screen and (max-width:500px) {
+            margin-left: 0px !important;
+            
+        }
+    }
+
+    .register-btn {
+
+        @media screen and (max-width:576px) {
+            margin:0;
+        }
+
+        .placedUserprofile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent linear-gradient(90deg, #E03A00 0%, #FF8445 100%) 0% 0% no-repeat;
+            border-radius: 30px;
+            color: #fff !important;
+            font-family: inherit;
+            padding: 5px 15px 5px 5px;
+
+            img{
+                width: 45px;
+            }
+
+            @media screen and (max-width:577px) {
+                padding: 5px 10px 5px 5px;
+            }
+
+            .user {
+                text-align: left;
+                padding-left: 8px;
+
+                p {
+                    font-size: 13px;
+                    line-height: 23px;
+                    font-weight: 500;
+                    color: #FFFFFF;
+                    text-transform: capitalize;
+                    opacity: 1;
+                    margin-bottom: 0px;
+                }
+
+                span {
+                    color: #FFFFFF;
+                    text-transform: capitalize;
+                    opacity: 1;
+                    font-size: 13px;
+                    line-height: 23px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    button {
+        background: #031e49;
+        border-radius: 30px;
+        color: #fff !important;
+        font-family: inherit;
+        height: 50px !important;
+        padding: 0px 30px;
+        width: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width:576px) {
+            padding: 0 12px;
+        }
+
+        @media screen and (max-width:495px) {
+            font-size: 0px;
+
+            img{
+                padding-right: 0px !important;
+            }
+        }
+
+    }
+}
+
+.listProduct:after{
+    background: transparent linear-gradient(90deg, #E03A00 0%, #FF8445 100%) 0% 0% no-repeat;
+    border-radius: 1442px 0px 0px 0px;
+    height: 50ch;
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+    content: "";
+    display: block;
+    z-index: -1;
+    bottom: 0;
+    width: 40%;
+}
+
+.customContainer {
+    padding-left: 8% !important;
+    padding-right: 8% !important;
+
+    @media screen and (max-width:1024px) {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+    @media screen and (max-width:576px) {
+        padding-left: 1% !important;
+        padding-right: 1% !important;
+    }
+}
+
+.buyerPlaceorder button .material-icons{
+    height: 34px;
+
+    @media screen and (max-width:576px) {
+        height: 24px;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .mobile-target{
+        height: 120px;
+        position: relative;
+        align-items: flex-start !important;
+
+        .register-btn{
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+
+            .placedUserprofile{
+                justify-content: start;
+            }
+        }
+    }
+
+    .card-body{
+        .suggestions-lists{
+            .title-product{
+                flex-direction: column;
+            }
+    
+            .p-rating{
+                justify-content: center;
+            }
+    
+            
+        }
+    
+        .prd-pnl{
+            flex-direction: column;
+        }
+    }
+}

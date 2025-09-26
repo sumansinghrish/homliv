@@ -1,0 +1,89 @@
+<div class="personal-wapper">
+    <form [formGroup]="UpdateProfile">
+        <div class="back-title" routerLink="/salepanel/dashboard"> <i class="bi bi-chevron-left"></i> Profile</div>
+
+        <div class="upload-profile text-center">
+            <label class="hoverable position-relative" for="fileInput">
+                <div class="profile-img">
+                    <img [src]="url ? url : 'assets/image/sales-icon/placeholder.png'" />
+                    <!-- <img class="img" id="fileInput1" [src]="profileImage? profileImage : 'assets/image/sales-icon/placeholder.png'"> -->
+
+                </div>
+                <!-- <div class="camera-ic">
+                <input  ="fileInput" type="file" class="select-profile-picture" (change)="uploadFile($event)" formControlName="profileImg"/>
+                <img src="assets/image/sales-icon/camera-ic.png">
+            </div> -->
+            </label>
+        </div>
+
+        <div class="custom-auth-input mb-4">
+            <mat-label> Name</mat-label>
+            <mat-form-field class="w-100" appearance="outline">
+                <input type="text" matInput placeholder="Enter First Name" readonly formControlName="name">
+            </mat-form-field>
+            <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                <div *ngIf="f['name'].errors['required']">
+                    Name is required
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="custom-auth-input mb-4">
+        <mat-label>Last Name</mat-label>
+        <mat-form-field class="w-100" appearance="outline">
+            <input type="text" matInput placeholder="Enter Last Name" readonly formControlName="lastName">
+        </mat-form-field>
+        <div *ngIf="submitted && f['lastName'].errors" class="text-danger">
+            <div *ngIf="f['lastName'].errors['required']">
+                 Last Name is required
+            </div>
+          
+          </div>
+    </div> -->
+
+        <div class="custom-auth-input  mb-4">
+            <mat-label>Mobile Number</mat-label>
+
+            <!-- <div class="all-country">
+            <input type="text" class="form-control w-100 textField" minlength="8" maxlength="12" formControlName="phoneNumber"
+                placeholder="Enter Mobile Number" ng2TelInput
+                [ng2TelInputOptions]="{initialCountry: 'us', showFlags:true,separateDialCode: true,autoPlaceholder:'off' }"
+                (intlTelInputObject)="telInputObject($event)" />
+        </div> -->
+
+
+            <mat-form-field class="w-100" appearance="outline">
+                <span matPrefix class="input-group-text">+966 <i class="bi bi-caret-down-fill"></i> </span>
+
+                <input type="text" matInput class="w-100 textField" minlength="8" maxlength="12"
+                    placeholder="Enter Mobile Number" readonly formControlName="phoneNumber"
+                    (intlTelInputObject)="telInputObject($event)"
+                    onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+            </mat-form-field>
+
+            <div *ngIf="submitted && f['phoneNumber'].errors" class="text-danger">
+                <div *ngIf="f['phoneNumber'].errors['required']">
+                    Contact Number is required
+                </div>
+
+            </div>
+        </div>
+
+        <div class="custom-auth-input mb-4">
+            <mat-label>Email</mat-label>
+            <mat-form-field class="w-100" appearance="outline">
+                <input type="text" matInput readonly placeholder="Enter Email Address" formControlName="email">
+            </mat-form-field>
+            <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                <div *ngIf="f['email'].errors['required']">
+                    Email is required
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <div class="action-btn my-3">
+        <button mat-flat-button color="primary" class=" m-auto w-100" (click)="onSubmit()">Save</button>
+    </div> -->
+    </form>
+</div>

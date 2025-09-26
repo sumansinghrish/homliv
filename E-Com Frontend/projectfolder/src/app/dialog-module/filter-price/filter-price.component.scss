@@ -1,0 +1,108 @@
+.map-fram {
+    height: 400px;
+}
+
+.side-header-2 {
+    background: #012348;
+    padding: 1rem;
+    gap: 1rem;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+
+    @media screen and (max-width:576px) {
+        padding:5px;
+    }
+}
+.org-btn{
+    background: #F36C1C 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    border: none;
+    width: 50% !important;
+    padding: 10px;
+    margin: auto;
+    display: block;
+    color: #fff;
+    margin-top: -30px;
+    position: relative;
+}
+
+
+.mat-mdc-outlined-button.mat-mdc-button-base {
+    height: 40px !important;
+}
+.mat-mdc-outlined-button {
+    padding: 0px 24px;
+    margin: 5px;
+}
+
+.savebtn{
+    cursor: pointer;
+    h4 {
+        color: #F36C1C;
+        margin-bottom: 0px;
+        font-weight: 500;
+    }
+}
+
+.filterSection {
+    .form-range{
+        width: 280px;
+    }
+
+    h4{
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 500;
+        color: #202020;
+        text-transform: capitalize;
+
+        @media screen and (max-width:576px) {
+            margin-bottom: 8px;
+        }
+    }
+
+    p{
+        margin-bottom: 8px;
+    }
+
+    label{
+        color: #202020;
+        text-transform: capitalize;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .clearFilter{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #E03A00;
+        border-radius: 7px;
+    }
+
+    .mat-mdc-slider{
+        min-width:300px;
+        @media screen and (max-width:576px) {
+            min-width:200px;
+            padding: 0 5px;
+        }
+    }
+}
+
+.Customrange{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+}
+
+.mdc-form-field .mdc-checkbox{
+    padding: 0px 4px;
+}
+
+.Customrange .mdc-slider__thumb-knob{
+    position: relative;
+
+}
+
+.Customrange .mdc-slider__thumb-knob .inc{
+    position: absolute;
+}

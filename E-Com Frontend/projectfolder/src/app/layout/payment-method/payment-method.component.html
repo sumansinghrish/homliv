@@ -1,0 +1,71 @@
+<div class="paymentMethod my-4">
+    <div class="sales-container">
+        <div class="d-flex gap-2 padding-20 align-items-center">
+            <img src="assets/image/back_black.png" class="bck-btn" (click)="close()">
+            <h3 class="aiwa-title">Select Payment Method</h3>
+        </div>
+
+        <div class="paymentMethoddetails">
+            <!-- <div class="creditCard mb-4 w-100 d-flex align-items-center justify-content-between">
+                <label>Pay Via Credit Card/Debit Card </label>
+                <div class="ms-auto">
+                    <mat-radio-button value="1" checked></mat-radio-button>
+                </div>
+            </div>
+            <div class="custom-auth-input mb-4">
+                <mat-label>Card Holder Name</mat-label>
+                <mat-form-field class="w-100" appearance="outline">
+                    <input type="text" matInput placeholder=" Enter card Holder Name" formControlName="text">
+                </mat-form-field>
+
+            </div>
+            <div class="custom-auth-input mb-4">
+                <mat-label>Card Name</mat-label>
+                <mat-form-field class="w-100" appearance="outline">
+                    <input type="text" matInput placeholder=" Enter card Name" formControlName="text">
+                </mat-form-field>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="custom-auth-input d-block mb-4">
+                        <mat-label>Expiration Date</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter Expiration Date" formControlName="text">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="custom-auth-input mb-4">
+                        <mat-label>CVV</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="number" matInput placeholder=" Enter CVV" formControlName="text">
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+            <div class="creditCard stcPay w-100 mb-4 d-flex align-items-center justify-content-between">
+                <img src="assets/image/stc_pay.png" class="img-fluid" />
+                <label class="ps-3">STC Pay </label>
+                <div class="ms-auto">
+                    <mat-radio-button value="2"></mat-radio-button>
+                </div>
+            </div> -->
+            <div class="creditCard cashDelivery w-100 mb-4 d-flex align-items-center justify-content-between">
+                <img src="assets/image/cod.png" class="img-fluid" />
+                <div class="cash">
+                    <label class="ps-3">Cash on Delivery </label>
+                    <p>You can pay via card at the time of delivery.</p>
+                </div>
+                <div class="ms-auto">
+                    <mat-radio-button value="3" checked></mat-radio-button>
+                </div>
+            </div>
+
+
+            <button class="btnproceed" type="button" (click)="close('COD')"> Proceed </button>
+        </div>
+
+    </div>
+</div>

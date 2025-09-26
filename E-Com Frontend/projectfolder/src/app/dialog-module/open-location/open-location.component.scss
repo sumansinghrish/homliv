@@ -1,0 +1,80 @@
+.side-header-2 {
+    background: #012348;
+    padding: 16px;
+    gap: 1rem;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+// .mat-mdc-outlined-button.mat-mdc-button-base {
+//     height: 40px !important;
+// }
+.mat-mdc-outlined-button {
+    padding: 0px 24px;
+    margin: 5px;
+}
+
+.org-btn{
+    background: #F36C1C 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    border: none;
+    width: 60% !important;
+    padding: 10px;
+    margin: auto;
+    display: block;
+    color: #fff;
+    margin-top: -50px;
+    position: absolute;
+    bottom: -37px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.select-title-h {
+    font-size: 17px;
+    margin-bottom: 0px;
+}
+
+.save-lists {
+    display: flex;
+    justify-content: space-between;
+    background: #0123480D 0% 0% no-repeat;
+    border-radius: 8px;
+    padding: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sl-box-i {
+    font-size: 25px;
+    color: #F36C1C;
+}
+.address-title {
+    margin-bottom: 6px;
+    color: #202020;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+// .mat-typography{
+//     overflow: scroll;
+// }
+
+// .delivery-address{
+//     height: 100vh;
+// }
+
+.delivery-address button{
+    margin-top: 50px;
+}
+
+.map-fram{
+    position: relative;
+    height: 400px;
+}
+
+// @media screen and (max-width:576px) {
+//     .mat-typography .map-fram agm-map{
+//         height:415px !important;
+//     }
+// }

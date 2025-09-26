@@ -1,0 +1,298 @@
+<div class="cartDetail">
+    <div class="container-fluid">
+        <!-- <div class="mb-2 padding-20 d-flex gap-2 align-items-center">
+            <img src="assets/image/back_black.png" alt="" class="bck-btn" routerLink="/home">
+            <h3 class="aiwa-title">Cart</h3>
+        </div> -->
+
+        <div class="d-flex gap-2 padding-20 align-items-center">
+            <img src="assets/image/back_black.png" class="bck-btn"
+                (click)="redirect(cartData ? cartData?.cartRecord[0]?.productId?._id : '' , false)">
+            <h3 class="aiwa-title">Cart</h3>
+        </div>
+
+        <div class="text-center align-items-center emptyCard" *ngIf="!cartData?.cartRecord?.length"> Your cart is empty.
+        </div>
+        <div class="row justify-content-between" *ngIf="cartData?.cartRecord?.length">
+            <div class="col-lg-7 col-md-6 col-12">
+                <div class="addProductcart">
+                    <div class="d-flex align-items-center justify-content-between productDetailquantity"
+                        *ngFor="let item of cartData?.cartRecord; let i = index;">
+                        <div class="mobileCart d-flex align-items-center justify-content-center">
+                            <div class="product-img">
+                                <img [src]="item.productId.subCatImg[0]" class="img-fluid" />
+                            </div>
+                            <div class="itemChoose">
+                                <div>
+                                    <h4>{{item.productId.nameEn }}</h4>
+                                    <p id="style-3">{{item.productId.descriptionEn }}</p>
+                                </div>
+
+                                <!--NEED TO WROK ON THIS WHEN AVAILABLE QUANTITY IS DONE-->
+                                <!-- <div class="col-lg-9" *ngIf="!checkAvailaleQuentity(item.productId.availableQuantity)">
+                                    <span class="unit-detail outStock text-danger">
+                                        Out of Stock
+                                    </span>
+                                </div> -->
+
+                                <!-- <div class="incProductQuantity"
+                                    *ngIf="checkAvailaleQuentity(item.productId.availableQuantity)"> -->
+                                <div class="incProductQuantity">
+                                    <div class="addcart-p d-flex">
+                                        <button class="btn-1 btn" [disabled]="item.quantity<=1"
+                                            (click)="decrement(item)">
+                                            -
+                                        </button>
+                                        <div class="item-count">{{ item.quantity }}</div>
+                                        <button class="btn-1 btn"
+                                            [disabled]="item.quantity>=item.productId.availableQuantity"
+                                            (click)="increment(item)">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productAmount">
+                            <h4>SAR {{(item?.unitPrice * item?.quantity) - ((item?.unitPrice/100 *item?.discount) * item?.quantity)}}</h4>
+                            <!-- <h4>SAR {{item?.unitPrice * item?.quantity}}</h4> -->
+                            <span class="pe-auto" (click)="deleteCartItem(item)">
+                                <img src="assets/image/allicon/delete.png" class="img-fluid" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="proceedProduct" *ngIf="minCartValue?.orderLimit>cartData?.totalPrice">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5>
+                                Add More Value Products to Proceed
+                            </h5>
+                            <span>SAR {{minCartValue?.orderLimit}}</span>
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar"
+                                [style.width.%]="(cartData?.totalPrice / minCartValue?.orderLimit)*100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h4>Total Amount</h4>
+                        <h3>SAR {{cartData?.totalPrice}}</h3>
+                    </div>
+                    <div class="shippingDetail">
+                        <h4 class="mb-2">Shipping Details</h4>
+                        <table class="table">
+                            <tr>
+                                <td>Delivery Address</td>
+                                <th style="width:auto; text-align: end;">{{deliveryAddress}}
+                                    <span class="d-block" style="cursor:pointer;">
+                                        <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="savedAddress(1)">edit</mat-icon>
+                                    </span>
+                                    
+                                </th>
+                                
+                                <!-- (click)="selectLocation(1)" -->
+                            </tr>
+                            <tr>
+                                <td>Billing Address</td>
+                                <th style="width:auto; text-align: end;">
+                                    {{nationalAddressdata}}
+                                    <span class="d-block" style="cursor:pointer;">
+                                        
+                                        <!-- BuildingNumber:-{{billingaddress.buildingNumber}} district:- {{billingaddress.district}} {{billingaddress.address}} -->
+                                         <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="savedAddress(2)">edit</mat-icon>
+                                    </span>
+                                    <!-- (click)="selectLocation(2)" -->
+                                </th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <th class="sameas">Same as Delivery Address
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                            (click)="bothAddressSame($event.target)">
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-12">
+                <div class="paymentDetails">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3>Payment Methods</h3>
+                        <img src="assets/image/mada.png" width="90px" />
+                    </div>
+                    <div class="card mt-3" (click)="openPaymentDailog()">
+                        <div *ngIf="!paymentType">Select Payment Method</div>
+                        <div *ngIf="!paymentType">
+                            <img src="assets/image/green_arrow.png" class="img-fluid" />
+                        </div>
+                        <div *ngIf="paymentType">
+                          <div class="afterCash d-flex align-items-center justify-content-between w-100">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/image/cod.png" class="img-fluid me-2" />
+                            <span>Cash on Delivery</span>
+                            </div>
+                            <div class="ms-auto right"><img src="assets/image/green_arrow.png" class="img-fluid" /></div>
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="loyaltyPointclaim">
+                        <div>
+                            <h5>Redeem Loyalty Points</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="discountOffer">
+                                <label class="form-check-label" for="discountOffer">
+                                    Use 1000 Points for SAR 50 Discount
+                                </label>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled pointSar">
+                            <li class="text-center">
+                                <img src="./assets/image/coins.png" class="img-fluid" />
+                                <p><span>1000</span> Points</p>
+                            </li>
+                            <li class="text-center">
+                                <img src="./assets/image/cash.png" class="img-fluid" />
+                                <p><span>50</span> SAR</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="cashback">Buyer will Earn 500 points as a cashback</p>
+                    <div class="promoCode">
+                        <div class="d-lg-flex d-block align-items-center justify-content-between mb-2">
+                            <h4>Apply Promo Code</h4>
+                            <a (click)="promocode()"><img src="./assets/image/oranger_discount.png"
+                                    class="img-fluid" />View Available Offers
+                            </a>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="basic-addon2">Apply Promo Code</span>
+                            <!-- <span class="input-group-text remove" >Remove</span> -->
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <h4>Summary</h4>
+                        <table class="table">
+                            <tr>
+                                <td>Items Price</td>
+                                <th>SAR {{cartData?.totalPrice}} </th>
+                            </tr>
+                            <tr>
+                                <td>Coupon Discount </td>
+                                <th style="color:#F20303;">-SAR 0</th>
+                            </tr>
+                            <tr style="    border-bottom:3px solid #EBEBEB;padding-bottom: 4px;">
+                                <td>Delivery Fee</td>
+                                <!-- <th style="color: #F36C1C;font-weight: 500;" class="sameas"> -->
+                                <th [ngStyle]="{
+                                        color: deliveryFee(deliveryChargesData) === 'Free' ? 'green' : '#F36C1C',
+                                        fontWeight:'500'
+                                      }" class="sameas">
+                                <!-- <th class="sameas"> -->
+                                    <span style="text-decoration: line-through;color: #202020; padding:0 5px;"
+                                        *ngIf="deliveryChargesData?.isOfferPriceUpdate">
+                                        SAR {{deliveryChargesData?.deliveryCharges}}
+                                    </span>
+                                     SAR {{
+                                    deliveryFee(deliveryChargesData)
+                                    }}
+                                    <!-- SAR {{deliveryChargesData}} -->
+                                </th>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="color: #585858; font-size:17px;line-height:28px;color: #012348;margin-top:10px;">
+                                    Total Amount
+                                    <span style="padding-left:10px;color: #585858;">Incl. VAT</span>
+                                </td>
+                                <th class="sameas"
+                                    style="color: #202020;font-size:18px;line-height:28px;margin-top:10px;">
+                                    <!-- SAR {{
+                                    totalAmountWithDeliveryFee(cartData?.totalPrice,
+                                    deliveryChargesData?.isCurrentOfferActive ? deliveryChargesData?.currentOffer:
+                                    deliveryChargesData?.deliveryCharges
+                                    )
+                                    }} -->
+                                    SAR {{
+                                        totalAmountWithDeliveryFee(
+                                          cartData?.totalPrice,
+                                          deliveryChargesData?.isOfferPriceUpdate ? 
+                                            deliveryChargesData?.offerPrice : 
+                                            deliveryChargesData?.deliveryCharges
+                                        )
+                                      }}
+
+                                </th>
+                            </tr>
+                        </table>
+                        <button class="btnCheckout" type="button" [ngClass]="{
+                            'customDisabled':checkoutButtonDisabled
+                        }" [disabled]="checkoutButtonDisabled" check (click)="openorderComplete()"> Checkout
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="circle-shap"></div>
+</div>
+<section class="product-suggestion pb-4 position-relative" *ngIf="suggestedProductData.length">
+    <div class="container-fluid">
+        <div class="mb-2 padding-20">
+            <h3 class="aiwa-title">Product Suggestions</h3>
+        </div>
+        <div class="suggestions-lists">
+            <div class="grid-box" *ngFor="let products of suggestedProductData; let i = index;">
+                <div class="product-card" *ngFor="let product of products.product; let j = index;">
+                    <div class="product-img">
+                        <div class="sale-bg" style="background: url('./assets/image/allicon/offer-shap.svg');">
+                            2 For Sar 35
+                        </div>
+                        <figure>
+                            <img [src]="product.subCatImg[0]" alt="image" class="img-fluid">
+                        </figure>
+                        <div class="like-btn">
+                            <div class="unit-grid">{{product.availableQuantity}} Unit Left</div>
+                        </div>
+                        <div class="favlike">
+                            <img src="assets/image/allicon/un_fav.png" alt="img">
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="title-product">
+                            <h4>{{product.nameEn}}</h4>
+                            <div class="p-sar">{{product.sellingPrice}} SAR</div>
+                        </div>
+
+                        <div class="p-rating">
+                            <div class="p-title">{{product.brand.nameEn}}</div>
+                        </div>
+
+                        <div class="prd-pnl">
+                            <div>
+                                <div class="p-title">6 Units</div>
+                                <ul class="mb-0 list-inline">
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-half"></i></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline-dark">Add</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

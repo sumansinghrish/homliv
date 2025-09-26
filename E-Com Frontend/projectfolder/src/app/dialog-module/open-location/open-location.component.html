@@ -1,0 +1,38 @@
+<div class="delivery-address positioin-relative">
+    <div >
+        <div class="side-header-2">
+            <div class="row">
+                <div class="col-lg-2 col-2">
+                    <div class="dialog-back-f" mat-dialog-close>
+                        <i class="bi bi-x-lg"></i>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-9">
+                    <div class="text-center">
+                        <h4 class="select-title-h">Select Delivery Address</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="map-fram">
+        <agm-map [latitude]="lat" [longitude]="lng" style="width: 100%;" [zoom]="12">
+            <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" [agmFitBounds]="true"
+                (dragEnd)="markerDragEnd($event)"></agm-marker>
+        </agm-map>
+        <div class="my-2">
+            <button class="org-btn"  (click)="setCurrentLocation()" > <i class="bi bi-crosshair"></i> Use Current
+                Location</button>
+        </div>
+    </div>
+    <div class="">
+        <div class="auth-form-wrapper">
+            
+            
+            <div class="action-btn mt-3">
+                <button mat-flat-button color="primary" class="w-100"(click)="close()">Confirm Location</button>
+            </div>
+        </div>
+    </div>
+    
+</div>

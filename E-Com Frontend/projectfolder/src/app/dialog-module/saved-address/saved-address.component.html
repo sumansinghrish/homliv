@@ -1,0 +1,53 @@
+<div class="positioin-relative">
+    <div>
+        <div class="side-header-2">
+            <div class="row">
+                <div class="col-lg-2 col-2">
+                    <div class="dialog-back-f" mat-dialog-close>
+                        <i class="bi bi-x-lg"></i>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-9">
+                    <div class="text-center">
+                        <h4 class="select-title-h">Saved Address</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mat-typography p-3">
+        <div class="auth-form-wrapper mt-4">
+            <div class="text-center align-items-center justify-content-center mt-4 p-3">
+                <!-- <strong> Saved location not available</strong> -->
+            </div>
+            <div class="save-lists" *ngFor="let data of billingaddress;let i = index">
+                <div class="sl-box" (click)="selecedLocation()" mat-dialog-close="">
+                    <img src="assets/image/allicon/select_lo.png" alt="icon" class="img-fluid">
+                </div>
+                <div (click)="newselectedLocation(data)">
+                    <div class="address-title">Business Name {{i+1}}</div>
+                    <p >{{data?.address}} {{data?.district}} {{data?.streetName}} {{data?.postalCode}} {{data?.city}} {{data?.buildingNumber}} {{data?.secondryNumber}}</p>
+                    <!-- <p>BuildingNumber:-{{billingaddress.buildingNumber}} district:- {{billingaddress.district}} {{billingaddress.address}}</p> -->
+                    <!-- <p>Sector 63, C-Block, Noida, Uttar Pradesh (201301)</p> -->
+                </div>
+                
+                <div class="sl-box-i">
+                    <i class="bi bi-three-dots-vertical" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li><a *ngIf="Addresstype!=1" class="dropdown-item" (click)="editaddress(data)">Edit</a></li>
+                        <li><a *ngIf="Addresstype==1" class="dropdown-item" (click)="editLocation(data)">Edit</a></li>
+                        <!-- <button mat-flat-button *ngIf="Addresstype==1" color="primary" class="w-100" (click)="selectLocation(1)">+ Add New Address</button> -->
+                        <!-- <li><a class="dropdown-item" (click)="deleteLocation(data)">Delete</a></li> -->
+                      </ul>
+                </div>
+            </div>
+    
+    
+        </div>
+    
+        <div class="addaddresss">
+            <button mat-flat-button *ngIf="Addresstype!==1" color="primary" class="w-100" (click)="addaddress()">+ Add New Address</button>
+            <button mat-flat-button *ngIf="Addresstype==1" color="primary" class="w-100" (click)="selectLocation(1)">+ Add New Address</button>
+        </div>
+    </div>
+</div>

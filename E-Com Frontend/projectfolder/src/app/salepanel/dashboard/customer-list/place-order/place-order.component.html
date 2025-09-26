@@ -1,0 +1,524 @@
+<div class="buyerPlaceorder">
+  <div class="container-fluid customContainer">
+    <div class="d-flex align-items-center justify-content-between mobile-target">
+      <div class="userBio d-lg-flex d-md-flex d-block align-items-center justify-content-between">
+        <div class="placeorderUserdetail">
+          <div class="salesUserimg">
+            <img *ngIf="patchValueData.profileImg" [src]="patchValueData.profileImg" class="img-fluid" />
+            <img *ngIf="!patchValueData.profileImg" src="assets/image/sales-icon/profile_ic.png" class="img-fluid ">
+          </div>
+          <div class="name">
+            <p>{{patchValueData.name}}</p>
+            <span>{{patchValueData.userId}}</span>
+          </div>
+        </div>
+        <div class="register-btn common-grid">
+          <div class="placedUserprofile mt-lg-0 mt-md-0 mt-2">
+            <div class="salesUserimg">
+            <img src="assets/image/allicon/user_profie_circle.png" alt="cart" class="img-fluid">
+            </div>
+            <div class="user">
+              <p>Sales Target</p>
+              <span>Achievement - 500/1000 SAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="logOutSalesManUser()">
+        <mat-icon><img src="assets/image/logout_customer.png" alt="icon" class="img-fluid pe-2">
+        </mat-icon>
+        Logout
+      </button>
+    </div>
+  </div>
+</div>
+
+<section class="top-category padding-40">
+  <div class="container-fluid">
+    <div class="topProduct-row">
+      <owl-carousel-o [options]="topProduct">
+        <ng-template carouselSlide *ngFor="let item of brandData">
+          <div class="topbrand" (click)="goToProductList(item?._id)">
+            <img [src]="item.brandImg" alt="banner" class="img-fluid">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+
+<section class="products-categories">
+  <div class="container-fluid">
+    <div class="product-bg">
+      <div class="product-header">
+        <h3 class="aiwa-title">Categories</h3>
+        <div class="view-Btn" routerLink="/all-category">View All Category</div>
+      </div>
+
+      <!-- <div class="product-grid">
+        <div class="categories-box" routerLink="/product-lists">
+          <figure>
+            <img src="assets/image/weekly_promotions.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>Weekly Promotions</h3>
+          </figcaption>
+        </div>
+
+        <div class="categories-box" routerLink="/product-lists">
+          <figure>
+            <img src="assets/image/buy_one_get_one.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>gotoweeklyproduct
+            <h3>Buy 1 Get 1</h3>
+          </figcaption>
+        </div>
+        <div class="categories-box" routerLink="/product-lists">
+          <figure>
+            <img src="assets/image/flat_rate.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>Flat Rate</h3>
+          </figcaption>
+        </div>
+      </div> -->
+
+      <div class="product-grid">
+        <div class="categories-box" *ngFor="let item of categoryListData">
+          <figure (click)="gotoweeklyproduct(item?._id)">
+            <img [src]="item.catImg" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>{{item.nameEn}}</h3>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-suggestion pb-4 position-relative">
+  <div class="container-fluid">
+    <div class="mb-2 padding-20">
+      <!-- <h3 class="aiwa-title">Product Suggestions</h3> -->
+    </div>
+
+    <!-- routerLink="/salepanel/dashboard/customer-list/place-order/product-details" -->
+    <div class="suggestions-lists d-none">
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <div class="sale-bg" style="background: url('./assets/image/allicon/offer-shap.svg');">2 For Sar 35</div>
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+
+          </div>
+
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <div>
+                <button class="btn btn-outline-dark d-none">Add</button>
+
+                <div class="addcart">
+                  <div class="btn-1"><img src="assets/image/allicon/remove.png" alt="add"></div>
+                  <div>2</div>
+                  <div class="btn-1"><img src="assets/image/allicon/add.png" alt="add"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-box">
+        <div class="product-card" click="open()">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <div class="sale-bg" style="background: url('assets/image/allicon/offer-shap.svg');">2 For Sar 35</div>
+            <figure>
+              <img src="assets/image/iphone.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>iPhone </h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/iphone.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>iPhone</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <div class="sale-bg" style="background: url('./assets/image/allicon/offer-shap.svg');">2 For Sar 35</div>
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="grid-box">
+        <div class="product-card">
+          <div class="product-img">
+            <figure>
+              <img src="assets/image/washing-mc.jpg" alt="image" class="img-fluid">
+            </figure>
+            <div class="like-btn">
+              <div class="unit-grid">4 Unit Left</div>
+            </div>
+            <div class="favlike">
+              <img src="assets/image/allicon/un_fav.png" alt="img">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-product">
+              <h4>Washing Machine</h4>
+              <div class="p-sar">20 SAR</div>
+            </div>
+            <div class="p-rating">
+              <div class="p-title">Sumsung</div>
+            </div>
+
+            <div class="prd-pnl">
+              <div>
+                <div class="p-title">6 Units</div>
+                <ul class="mb-0 list-inline">
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-fill"></i></li>
+                  <li><i class="bi bi-star-half"></i></li>
+                </ul>
+              </div>
+              <button class="btn btn-outline-dark">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+<a href="#" class="whatsapp-icon">
+  <img src="assets/image/allicon/whatsapp.png" alt="whatsapp-icon" class="img-fluid">
+</a>

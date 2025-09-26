@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between">
+    <div class="auth-head" style="margin: 1rem auto;">
+        <h4>Select Channel</h4>
+    </div>
+    <div class="dialog-back channback" mat-dialog-close>
+        <i class="bi bi-x-lg"></i>
+    </div>
+    
+</div>
+<mat-dialog-content class="mat-typography selec-user text-center">
+    <div class="auth-form-wrapper">
+        <div class="custom-auth-input mb-4">
+            <div class="custom-toggle">
+                <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" (change)="selectChannel($event)" class="baqala-tab user-baqala-tab">
+                    <mat-button-toggle value="Baqala">Baqala</mat-button-toggle>
+                    <mat-button-toggle value="Super Market">Super Market</mat-button-toggle>
+                    <mat-button-toggle value="Whole Sale">Whole Sale</mat-button-toggle>
+                    <mat-button-toggle value="Restaurant">Restaurant</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngIf="!channelId && showValidationMessage" class="validation-error">
+        Please select a channel before proceeding.
+    </div> -->
+    <!-- <h2>Select Classification</h2> -->
+
+    <!-- <div class="custom-toggle mb-3 d-flex align-items-center justify-content-center">
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color"
+            >
+            <mat-button-toggle value="A" class="grid-1" checked>A</mat-button-toggle>
+            <mat-button-toggle value="B" class="grid-2">B</mat-button-toggle>
+            <mat-button-toggle value="C" class="grid-3">C</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div> -->
+    <div class="action-btn">
+        <button [disabled]="showValidationMessage" mat-flat-button color="primary" class="w-100" mat-dialog-close (click)="otpDialog()">Next</button>
+    </div>
+</mat-dialog-content>

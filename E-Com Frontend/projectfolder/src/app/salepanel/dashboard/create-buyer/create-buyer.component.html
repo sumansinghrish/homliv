@@ -1,0 +1,386 @@
+<section class="product-suggestion pb-5 position-relative">
+    <div class="container">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="sales-container">
+                <div class="mb-2 padding-20 d-flex gap-2 align-items-center">
+                    <img src="assets/image/back_black.png" alt="" class="bck-btn" routerLink="/salepanel/dashboard">
+                    <h3 class="aiwa-title">Create Buyer</h3>
+                </div>
+
+                <div class="upload-profile text-center">
+                    <label class="hoverable position-relative" for="fileInput">
+                        <div class="profile-img">
+                            <img class="img" id="fileInput1"
+                                [src]="profileImage1? profileImage1 : 'assets/image/sales-icon/placeholder.png'">
+                        </div>
+                        <div class="camera-ic">
+                            <input id="fileInput" type="file" class="select-profile-picture"
+                                (change)="uploadFile1($event)" />
+                            <img src="assets/image/sales-icon/camera-ic.png">
+                        </div>
+                    </label>
+                </div>
+
+                <div class="custom-auth-input  mb-4">
+                    <mat-label>Name</mat-label>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <input type="text" matInput placeholder="Enter Name" formControlName="name"
+                            (keypress)="onKeyPress($event)">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                        <div *ngIf="f['name'].errors['required']">
+                            Name is required
+                        </div>
+
+                    </div>
+                </div>
+                <div class="custom-auth-input  mb-4">
+                    <mat-label>Email ID</mat-label>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <input type="text" matInput placeholder=" Enter Email ID ( Optional ) " formControlName="email">
+                    </mat-form-field>
+                    <mat-error *ngIf="submitted && userForm.get('email')?.hasError('email')">
+                        Enter a valid email address
+                    </mat-error>
+                    <!-- <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                        <div *ngIf="f['email'].errors['required']">
+                            Email is required
+                        </div>
+
+                    </div> -->
+                </div>
+                <div class="custom-auth-input address mb-4">
+                    <mat-label>Delivery Address</mat-label>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <!-- <input type="text" matInput placeholder="Enter Address ( Location ) " > -->
+                        <input (keydown.enter)="$event.preventDefault()" matInput class=" srch location-padding"
+                            #search1 type="text" onpaste="return false;" ondrop="return false;" [(ngModel)]="address"
+                            placeholder="Enter Delivery Address" [ngModelOptions]="{standalone: true}" />
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="mylocationDialog()">my_location</mat-icon>
+                        </mat-form-field>
+                    
+                        
+                    <mat-error *ngIf="submitted && !address">
+                        Delivery address required
+                    </mat-error>
+                </div>
+                <div class="custom-auth-input address mb-4">
+                    <mat-label>National Address</mat-label>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <!-- <input type="text" matInput placeholder="Enter Address ( Location ) " > -->
+                        <input matInput class=" srch location-padding" formControlName="nationalAddress" readonly
+                            type="text" onpaste="return false;" 
+                            placeholder="Add National Address" />
+                            <span (click)="addAddress()" style="cursor: pointer;
+                            font-size: 30px;
+                            line-height: 40px;
+                            position: absolute;
+                            width: 30px;
+                            right: 0;">+</span>
+                    </mat-form-field>
+                    <div *ngIf="submitted && f['nationalAddress'].errors" class="text-danger">
+                        <div *ngIf="f['nationalAddress'].errors['required']">
+                            National Address is required
+                        </div>
+
+                    </div>
+                </div>
+                <div class="custom-auth-input  mb-4">
+                    <mat-label>Mobile Number</mat-label>
+                    <!-- <div class="all-country">
+                        <input type="text" class="form-control w-100 textField" minlength="7" maxlength="15"
+                            placeholder="Enter Mobile Number" formControlName="phoneNumber"
+                            formControlName="phoneNumber" ng2TelInput
+                            [ng2TelInputOptions]="{initialCountry: 'us', showFlags:true,separateDialCode: true,autoPlaceholder:'off' }"
+                            (intlTelInputObject)="telInputObject($event)"
+                            onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+                    </div> -->
+
+                    <mat-form-field class="w-100" appearance="outline">
+                        <span matPrefix class="input-group-text">+966 <i class="bi bi-caret-down-fill"></i> </span>
+                        <input type="text" matInput class="w-100 textField" readonly minlength="7" maxlength="15"
+                            placeholder="Enter Mobile Number" formControlName="phoneNumber"
+                            (intlTelInputObject)="telInputObject($event)"
+                            onkeypress="return event.charCode > 47 && event.charCode < 58;" />
+
+                    </mat-form-field>
+
+
+                    <div *ngIf="submitted && f['phoneNumber'].errors" class="text-danger">
+                        <div *ngIf="f['phoneNumber'].errors['required']">
+                            Mobile Number Is Required
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="custom-auth-input  mb-4">
+                    <mat-label>National Address</mat-label>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <input (keydown.enter)="$event.preventDefault()" matInput class=" srch location-padding"
+                            #nationaAddress type="text" onpaste="return false;" ondrop="return false;"
+                            [(ngModel)]="nationalAddress" placeholder="Enter National Address"
+                            [ngModelOptions]="{standalone: true}" />
+                    </mat-form-field>
+                    <mat-error *ngIf="submitted && !nationalAddress">
+                        National address required
+                    </mat-error>
+                </div> -->
+
+                <h4>Enter Business Details</h4>
+                <div formGroupName="businessDetails">
+                    <div class="custom-auth-input  my-4">
+                        <mat-label>Business Name</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter Business Name" formControlName="businessName"
+                                (keypress)="onKeyPress($event)">
+                        </mat-form-field>
+                        <div *ngIf="submitted && userForm.get('businessDetails.businessName')?.invalid"
+                            class="text-danger">
+                            <div *ngIf="userForm.get('businessDetails.businessName')?.errors?.['required']">
+                                Business Name Is Required
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="custom-auth-input mb-4">
+                        <mat-label>VAT Number</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter VAT Number" formControlName="VATNumber"
+                                minlength="15" maxlength="15"
+                                onkeypress="return event.charCode > 47 && event.charCode < 58;">
+                        </mat-form-field>
+                        <div *ngIf="submitted && userForm.get('businessDetails.VATNumber')?.invalid"
+                            class="text-danger">
+                            <div *ngIf="userForm.get('businessDetails.VATNumber')?.errors?.['required']">
+                                VAT Number Is Required
+                            </div>
+                            <div *ngIf="userForm.get('businessDetails.VATNumber')?.errors?.['minlength']">
+                                VAT Number should be 15 digits
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="mt-3">CR Document<small>*</small></h6>
+                    <div class="custom-auth-input mb-3">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" maxlength="10" matInput placeholder="Enter CR Number"
+                                formControlName="CRNumber"
+                                onkeypress="return event.charCode > 47 && event.charCode < 58;">
+                        </mat-form-field>
+                        <div *ngIf="submitted && userForm.get('businessDetails.CRNumber')?.invalid" class="text-danger">
+                            <div *ngIf="userForm.get('businessDetails.CRNumber')?.errors?.['required']">
+                                CR Number is required
+                            </div>
+                            <div *ngIf="userForm.get('businessDetails.CRNumber')?.errors?.['minlength']">
+                                CR Number must be exactly 10 digits
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'CRFront')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!CRDocumentFront">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!CRDocumentFront" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="CRDocumentFront" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Frontside</span>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'CRBack')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!CRDocumentBack">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!CRDocumentBack" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="CRDocumentBack" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Backside</span>
+                        </div>
+                    </div>
+                    <h6 class="mt-3">VAT Document<small>*</small></h6>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'VATFront')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!VATDocFront">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!VATDocFront" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="VATDocFront" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Frontside</span>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'VATBack')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!VATDocBack">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!VATDocBack" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="VATDocBack" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Backside</span>
+                        </div>
+                    </div>
+
+                    <h6 class="mt-3">National Address Proof<small>*</small></h6>
+                    <!-- <div class="custom-auth-input mb-3">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Adress" formControlName="nationaAddress"
+                                onkeypress="return event.charCode > 47 && event.charCode < 58;">
+                        </mat-form-field>
+                    </div>   -->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'addressFront')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!addressProofFront">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!addressProofFront" src="assets/image/upload_image.png">
+                                    <img id="fileInput1" [src]="addressProofFront" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+
+                            </div>
+
+                            <span class="logo-name">Frontside</span>
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'addressback')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!addressProofBack">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!addressProofBack" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="addressProofBack" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Backside</span>
+                        </div>
+                    </div>
+                    <h6 class="mt-3">ID Proof</h6>
+
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'IDFront')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!IDProofFront">Upload Image</span>
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!IDProofFront" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="IDProofFront" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Frontside</span>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'IDBack')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!IDProofBack">Upload Image</span>
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!IDProofBack" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="IDProofBack" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Backside</span>
+                        </div>
+                    </div>
+
+                    <h6 class="mt-3">Shop Image (optional)</h6>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'shopFront')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!shopImageFront">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!shopImageFront" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="shopImageFront" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Frontside</span>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 text-center">
+                            <div class="file-upload ">
+                                <label class="cameradiv">
+                                    <!-- <img src="assets/image/upload_image.png"> -->
+                                    <input type="file" name="somename" (change)="uploadFile($event, 'shopBack')"
+                                        accept="image/*" class="cursor-pointer" />
+                                    <span class="upimg" *ngIf="!shopImageBack">Upload Image</span>
+
+                                </label>
+                                <div class="img">
+                                    <img *ngIf="!shopImageBack" src="assets/image/upload_image.png" />
+                                    <img id="fileInput1" [src]="shopImageBack" class="img-fluid" height="100%"
+                                        width="100%" />
+                                </div>
+                            </div>
+                            <span class="logo-name">Backside</span>
+                        </div>
+                    </div>
+                    <div class="action-btn my-3">
+                        <button mat-flat-button color="primary" class=" m-auto w-100">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

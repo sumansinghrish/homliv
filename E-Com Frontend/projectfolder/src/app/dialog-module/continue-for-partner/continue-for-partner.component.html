@@ -1,0 +1,57 @@
+<div mat-dialog-title>
+    
+    <div class="dialog-back"  mat-dialog-close>
+        <i class="bi bi-x-lg"></i>
+    </div>
+    
+    <div class="dialog-logo-img text-center">
+        <img src="assets/image/pop_up_logo.png" alt="logo" class="img-fluid">
+    </div>
+</div>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="signInsalesForm" >
+    <div class="auth-form-wrapper">
+        <div class="auth-head">
+            <h4>Sign In</h4>
+        </div>
+
+
+        <div class="custom-auth-input  mb-3">
+            <label>User ID / Email ID</label>
+            <mat-form-field class="w-100" appearance="outline">
+                <input type="text" matInput placeholder="Enter User ID/ Email ID" formControlName="email">
+            </mat-form-field>
+            <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                <div *ngIf="f['email'].errors['required']">
+                  Email is required
+                </div>
+                <div *ngIf="f['email'].errors['email']">
+                    Please enter a valid Email
+                  </div>
+              </div>
+        </div>
+
+        <div class="custom-auth-input mb-3">
+            <label>Password</label>
+            <mat-form-field class="w-100" appearance="outline">
+                <input type="text" matInput placeholder="Enter Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <div *ngIf="submitted && f['password'].errors" class="text-danger">
+                <div *ngIf="f['password'].errors['required']">
+                  Password is required
+                </div>
+              
+              </div>
+        </div>
+
+     <div class="action-btn mt-3">
+            <button mat-flat-button color="primary" class="w-100"  (click)="saleslogin()">Login</button>
+        </div>
+        
+  </div>
+</form>
+</mat-dialog-content>
+

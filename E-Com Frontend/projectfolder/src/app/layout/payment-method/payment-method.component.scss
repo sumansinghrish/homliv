@@ -1,0 +1,40 @@
+.paymentMethod{
+    .sales-container{
+        max-width: 600px;
+    }
+    .paymentMethoddetails{
+        .creditCard{
+            background: #0123480D;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .cashDelivery{
+            .cash{
+                p{
+                    font-size: 14px;
+                    padding-left: 16px;
+                    color: #539F45;
+                    font-weight: 500;
+                }
+            }
+        }
+        .btnproceed{
+            background: #012348;
+            border-radius: 10px;
+            width: 100%;
+            padding: 10px 0;
+            color:#fff;
+            border: none;
+        }
+    }
+}
+      
+.paymentMethod{
+    padding: 0 20px 40px;
+    height: -webkit-fill-available;
+    display: flex;
+}
+
+.paymentMethoddetails{
+    margin-top: 32px;
+}

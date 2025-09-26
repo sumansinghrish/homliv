@@ -1,0 +1,40 @@
+<section class="products-categories">
+  <div class="container-fluid" *ngIf="customerAcess==false">
+    <div class="product-bg">
+      <div class="product-header d-flex align-items-center">
+        <img src="assets/image/back_black.png" class="bck-btn" routerLink="/salepanel/dashboard/customer-list/place-order">
+        <h3 class="aiwa-title">Categories</h3>
+      </div>
+      <div class="align-items-center text-center fs-4 mt-4" *ngIf="!categoryList.length"> No Categories Available </div>
+      <div class="product-grid">
+        <div class="categories-box" *ngFor="let item of categoryList; let i=index;" (click)="reDirect(item)" >
+          <figure>
+            <img [src]="item.catImg" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>{{item.nameEn}}</h3>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" *ngIf="customerAcess==true">
+    <div class="product-bg">
+      <div class="product-header d-flex align-items-center">
+        <img src="assets/image/back_black.png" class="bck-btn" routerLink="/home">
+        <h3 class="aiwa-title">Categories</h3>
+      </div>
+      <div class="align-items-center text-center fs-4 mt-4" *ngIf="!categoryList.length"> No Categories Available </div>
+      <div class="product-grid">
+        <div class="categories-box" *ngFor="let item of categoryList; let i=index;" (click)="reDirect(item)" >
+          <figure>
+            <img [src]="item.catImg" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>{{item.nameEn}}</h3>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,298 @@
+.customerList{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+
+    @media screen and (max-width:577px) {
+        display: block;
+        padding: 10px 0;
+
+        .padding-20{
+            padding-bottom:10px;
+        }
+    }
+
+    h3{
+        font-size: 21px;
+        line-height: 30px;
+        font-weight: 600;
+        color: #012348;
+    
+    }
+    .bck-btn{
+        height: 20px;
+        width: 10px;
+        cursor: pointer;
+    }
+
+    .form-group{
+        max-width: 400px;
+        width: 100%;       
+    }
+
+    .search-input{
+        border: 1px solid #70707033;
+        border-radius: 30px;
+
+        .form-control {
+            border-radius: 50px;
+            padding: 11px 40px;
+            border: none;
+            margin: 0px 0px;
+
+            &::placeholder{
+                color: #ACACAC;
+            }
+        }
+        i {
+            position: absolute;
+            color: #333;
+            left: 15px;
+            top: 10px;
+            font-size: 18px;
+        }
+    }
+}
+
+
+.tabMenu{
+    .customNavbar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ABABAB;
+        border-radius: 6px;
+        padding: 5px;
+        flex-wrap: wrap;
+        
+        @media screen and (max-width:991px) {
+            overflow-x: scroll;
+        }
+
+        @media screen and (max-width:576px) {
+            display: block;
+        }
+
+        .nav-item{
+            width: 20%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media screen and (max-width:1024px) {
+                max-width: 24%;
+                width: 100%;
+            }
+
+            @media screen and (max-width:991px) {
+                max-width: 30%;
+                width: 100%;
+            }
+
+            @media screen and (max-width:577px) {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            button{
+                background: none;
+                width: 100%;
+                font-size: 16px;
+                line-height: 26px;
+                color: #585858;
+                font-weight: 500;
+
+                @media screen and (max-width:1024px) {
+                    border: 1px solid #000;
+                    margin: 5px 10px;
+                    padding: 4px;
+                    font-size: 14px;
+                    line-height: 24px;
+
+                    &.active{
+                        border: none;
+                        
+                    }
+                }
+
+                @media screen and (max-width:991px) {
+                    &.active{
+                        border: none;
+                        
+                    }
+                }
+
+                &.active{
+                    background: #FF8445;
+                    width: 100%;
+                    color:#fff;
+                }
+            }
+        }
+    }
+
+    .tab-content{
+        .tab-pane{
+            .customTabpaneshow{
+                background: #0123480D;
+                border-radius: 12px;
+                width: 100% !important;
+                max-width: 800px;
+                margin: 30px auto;
+
+                @media screen and (max-width:576px) {
+                    margin: 15px auto;
+                }
+
+                .card{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    border: none;
+                    background: none;
+
+                    .defineUser{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 15px 20px;
+                        border-bottom: 1px solid #7070703d;
+                        @media screen and (max-width:577px) {
+                            padding: 15px;
+                        }
+                        .userOrder{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            
+                            .avtar-circle {
+                                height: 90px;
+                                width: 90px;
+                                border-radius: 50px;
+                                overflow: hidden;
+                                border: 1px solid #ddd;
+
+                                img{
+                                    width: 100%;
+                                    height:100%;
+                                    object-fit: cover;
+                                }
+
+                                @media screen and (max-width:1400px) {
+                                    height: 80px;
+                                    width: 80px;
+                                }
+
+                                @media screen and (max-width:1024px) {
+                                    height: 60px;
+                                    width: 60px;
+                                }
+
+                                @media screen and (max-width:768px) {
+                                    height: 50px;
+                                    width: 50px;
+                                }
+                            }
+
+                            .name{
+                                margin-left: 20px;
+                                p{
+                                    font-size: 20px;
+                                    color: #202020;
+                                    opacity: 1;
+                                    line-height: 30px;
+                                    font-weight: 500;
+                                    margin-bottom: 0px;
+
+                                    @media screen and (max-width:1024px) {
+                                        font-size: 18px;
+                                    }
+                                    @media screen and (max-width:768px) {
+                                        font-size: 16px;
+                                    }
+                                }
+                                span{
+                                    color: #4A4A4A;
+                                    text-transform: capitalize;
+                                    opacity: 1;
+                                    font-size: 16px;
+                                    line-height: 26px;
+                                }
+    
+                            }
+                        }
+    
+                        .btnPlace{
+                            button{
+                                background: #012348 0% 0% no-repeat padding-box;
+                                border-radius: 8px;
+                                opacity: 1;
+                                font-size: 16px;
+                                line-height: 26px;
+                                color: #fff;
+                                padding: 10px 30px;
+                                border: none;
+
+                                @media screen and (max-width:576px) {
+                                    padding: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    .userDetail{
+                        padding: 15px 20px;
+                        border-bottom: 1px solid #7070703d;
+
+                        @media screen and (max-width:576px) {
+                            padding:15px;
+                        }
+
+                        .table{
+                            margin-bottom: 0px;;
+
+                            tr {
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: 15px;
+                                line-height: 25px;
+                                color: #585858;
+                                padding: 5px 0px;
+                            }
+                        }
+                    }
+
+                    .addressDetail{
+                        padding: 15px 20px;
+                        span{
+                            color: #585858;
+                            text-transform: capitalize;
+                            opacity: 1;
+                            font-size: 16px;
+                            line-height: 26px;
+                            font-weight: 500;
+                            margin:0px;
+                        }
+                        p{
+                            font-size: 16px;
+                            line-height: 26px;
+                            font-weight: 500;
+                            margin:0px;
+                            color: #012348;
+                            text-transform: capitalize;
+                            opacity: 1;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    
+}

@@ -1,0 +1,14 @@
+.myaccount-panel{
+    padding: 80px 0px;
+
+    @media screen and (max-width:576px) {
+        padding:20px 0;
+    }
+}
+.page-wapper{
+    padding: 0px 50px;
+    
+    @media screen and (max-width:576px) {
+        padding: 0px;
+    }
+}

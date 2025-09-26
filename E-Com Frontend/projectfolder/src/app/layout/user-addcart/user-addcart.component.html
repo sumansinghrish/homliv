@@ -1,0 +1,248 @@
+<div class="cartDetail">
+    <div class="container-fluid">
+        <!-- <div class="mb-2 padding-20 d-flex gap-2 align-items-center">
+            <img src="assets/image/back_black.png" alt="" class="bck-btn" routerLink="/home">
+            <h3 class="aiwa-title">Cart</h3>
+        </div> -->
+
+        <div class="d-flex gap-2 padding-20 align-items-center">
+            <img src="assets/image/back_black.png" class="bck-btn">
+            <h3 class="aiwa-title">Cart</h3>
+        </div>
+
+        <div class="text-center align-items-center emptyCard"> Your cart is empty.
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-lg-7 col-md-6 col-12">
+                <div class="addProductcart">
+                    <div class="d-flex align-items-center justify-content-between productDetailquantity">
+                        <div class="mobileCart d-flex align-items-center justify-content-center">
+                            <div class="product-img">
+                                <img src="/assets/image/banner-1.jpg" class="img-fluid" />
+                            </div>
+                            <div class="itemChoose">
+                                <div>
+                                    <h4></h4>
+                                    <p id="style-3"></p>
+                                </div>
+                                <div class="col-lg-9">
+                                    <span class="unit-detail outStock text-danger">
+                                        Out of Stock
+                                    </span>
+                                </div>
+                                <div class="incProductQuantity">
+                                    <div class="addcart-p d-flex">
+                                        <button class="btn-1 btn" >
+                                            -
+                                        </button>
+                                        <div class="item-count">1</div>
+                                        <button class="btn-1 btn">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productAmount">
+                            <h4>SAR</h4>
+                            <span class="pe-auto">
+                                <img src="/assets/image/allicon/delete.png" class="img-fluid" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="proceedProduct" >
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5>
+                                Add More Value Products to Proceed
+                            </h5>
+                            <span>SAR 45</span>
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: 10%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h4>Total Amount</h4>
+                        <h3>SAR 20</h3>
+                    </div>
+                    <div class="shippingDetail">
+                        <h4>Shipping Details</h4>
+                        <table class="table">
+                            <tr>
+                                <td>Delivery Address</td>
+                                <th><a (click)="selectLocation()">Add Delivery Address</a></th>
+                            </tr>
+                            <tr>
+                                <td>Billing Address</td>
+                                <th><a (click)="selectLocation()">Add Billing Address</a> </th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <th class="sameas">Same as Delivery Address
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-12">
+                <div class="paymentDetails">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3>Payment Methods</h3>
+                        <img src="assets/image/mada.png" width="90px" />
+                    </div>
+                    <div class="card mt-3">
+                        <div>Select Payment Method</div>
+                        <div>
+                            <img src="assets/image/green_arrow.png" class="img-fluid" />
+                        </div>
+                        <!-- <div>
+                          <div class="afterCash d-flex align-items-center justify-content-between w-100">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/image/cod.png" class="img-fluid me-2" />
+                            <span>Cash on Delivery</span>
+                            </div>
+                            <div class="ms-auto right"><img src="assets/image/green_arrow.png" class="img-fluid" /></div>
+                          </div>
+                        </div> -->
+
+                    </div>
+                    <div class="loyaltyPointclaim">
+                        <div>
+                            <h5>Redeem Loyalty Points</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="discountOffer">
+                                <label class="form-check-label" for="discountOffer">
+                                    Use 1000 Points for SAR 50 Discount
+                                </label>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled pointSar">
+                            <li class="text-center">
+                                <img src="./assets/image/coins.png" class="img-fluid" />
+                                <p><span>1000</span> Points</p>
+                            </li>
+                            <li class="text-center">
+                                <img src="./assets/image/cash.png" class="img-fluid" />
+                                <p><span>50</span> SAR</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="cashback">Buyer will Earn 500 points as a cashback</p>
+                    <div class="promoCode">
+                        <div class="d-lg-flex d-block align-items-center justify-content-between mb-2">
+                            <h4>Apply Promo Code</h4>
+                            <a (click)="promocode()"><img src="./assets/image/oranger_discount.png"
+                                    class="img-fluid" />View Available Offers
+                            </a>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="basic-addon2">Apply Promo Code</span>
+                            <!-- <span class="input-group-text remove" >Remove</span> -->
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <h4>Summary</h4>
+                        <table class="table">
+                            <tr>
+                                <td>Items Price</td>
+                                <th>SAR </th>
+                            </tr>
+                            <tr>
+                                <td>Coupon Discount </td>
+                                <th style="color:#F20303;">-SAR 0</th>
+                            </tr>
+                            <tr style="border-bottom:3px solid #EBEBEB;padding-bottom: 4px;">
+                                <td>Delivery Fee</td>
+                                <!-- <th style="color: #F36C1C;font-weight: 500;" class="sameas"> -->
+                                <th style="color:#F36C1C;
+                                        font-weight:500;"class="sameas">
+
+                                    <span style="text-decoration: line-through;color: #202020; padding:0 5px;">
+                                        SAR 
+                                    </span>
+                                    SAR
+                                </th>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="color: #585858; font-size:17px;line-height:28px;color: #012348;margin-top:10px;">
+                                    Total Amount
+                                    <span style="padding-left:10px;color: #585858;">Incl. VAT</span>
+                                </td>
+                                <th class="sameas"
+                                    style="color: #202020;font-size:18px;line-height:28px;margin-top:10px;">
+                                    SAR
+                                </th>
+                            </tr>
+                        </table>
+                        <button class="btnCheckout" type="button" (click)="openorderComplete()"> Checkout
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="circle-shap"></div>
+</div>
+<section class="product-suggestion pb-4 position-relative">
+    <div class="container-fluid">
+        <div class="mb-2 padding-20">
+            <h3 class="aiwa-title">Product Suggestions</h3>
+        </div>
+        <div class="suggestions-lists">
+            <div class="grid-box">
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="sale-bg" style="background: url('./assets/image/allicon/offer-shap.svg');">
+                            2 For Sar 35
+                        </div>
+                        <figure>
+                            <img alt="image" class="img-fluid">
+                        </figure>
+                        <div class="like-btn">
+                            <div class="unit-grid"> Unit Left</div>
+                        </div>
+                        <div class="favlike">
+                            <img src="assets/image/allicon/un_fav.png" alt="img">
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="title-product">
+                            <h4></h4>
+                            <div class="p-sar"> SAR</div>
+                        </div>
+
+                        <div class="p-rating">
+                            <div class="p-title"></div>
+                        </div>
+
+                        <div class="prd-pnl">
+                            <div>
+                                <div class="p-title">6 Units</div>
+                                <ul class="mb-0 list-inline">
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-half"></i></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline-dark">Add</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

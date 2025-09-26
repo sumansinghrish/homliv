@@ -1,0 +1,78 @@
+<div class="promoCode">
+    <div class="side-header-2">
+        <div class="row">
+            <div class="col-lg-2 col-2">
+                <div class="close-icon" mat-dialog-close>
+                    <i class="bi bi-x-circle"></i>
+                </div>
+            </div>
+            <div class="col-lg-9 col-9">
+                <div class="text-center">
+                    <h4 class="select-title-h">Promo Codes</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="applyCode" *ngFor="let data of promocodedata">
+        <div class="applycodedetail d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
+                <img src="assets/image/promocode.png" class="img-fluid" />
+                <div>
+                    <!-- <h6>WELCOME10</h6> -->
+                     <h6>{{data.promoCode}}</h6>
+                    <span>Expires On {{data.endDate | date:'MMM / dd / YYYY'}}</span>
+                     <!-- Expires On - 26 June -->
+                </div>
+                
+            </div>
+            <button class="btnApply" type="button" (click)="proceed(data)"> Apply </button>
+        </div>
+        <p>{{data.descriptionEn}}</p>
+    </div>
+
+    <!-- <div class="applyCode">
+        <div class="applycodedetail d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
+                <img src="assets/image/promocode.png" class="img-fluid" />
+                <div>
+          
+                     <h6>{{promocode}}</h6>
+                    <span>Expires On {{lastdate | date:'MMM / dd / YYYY'}}</span>
+                 
+                </div>
+                
+            </div>
+            <button class="btnApply" type="button"> Proceed </button>
+        </div>
+        <p>{{promocode}}</p>
+    </div> -->
+    <!-- <div class="applyCode">
+        <div class="applycodedetail d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
+                <img src="assets/image/promocode.png" class="img-fluid" />
+                <div>
+                    <h6>WELCOME10</h6>
+                    <span>Expires On - 26 June</span>
+                </div>
+                
+            </div>
+            <button class="btnApply" type="button"> Proceed </button>
+        </div>
+        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.</p>
+    </div>
+    <div class="applyCode">
+        <div class="applycodedetail d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
+                <img src="assets/image/promocode.png" class="img-fluid" />
+                <div>
+                    <h6>WELCOME10</h6>
+                    <span>Expires On - 26 June</span>
+                </div>
+                
+            </div>
+            <button class="btnApply" type="button"> Proceed </button>
+        </div>
+        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.</p>
+    </div> -->
+</div>

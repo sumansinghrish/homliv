@@ -1,0 +1,56 @@
+.map-fram {
+    height: 280px;
+}
+
+.side-header-2 {
+    background: #012348;
+    padding: 1rem;
+    gap: 1rem;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+.org-btn{
+    background: #F36C1C 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    border: none;
+    width: 50% !important;
+    padding: 10px;
+    margin: auto;
+    display: block;
+    color: #fff;
+    margin-top: -50px;
+    position: absolute;
+    bottom: -37px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+.mat-mdc-outlined-button.mat-mdc-button-base {
+    height: 40px !important;
+}
+.mat-mdc-outlined-button {
+    padding: 0px 24px;
+    margin: 5px;
+}
+
+.savebtn{
+    cursor: pointer;
+    h4 {
+        color: #F36C1C;
+        margin-bottom: 0px;
+        font-weight: 500;
+    }
+}
+
+.location span{
+    color: #ACACAC;
+    text-transform: capitalize;
+}
+// .select-channel{
+//     height: 100vh;
+// }
+
+.map-fram{
+    position: relative;
+    height: 400px;
+}

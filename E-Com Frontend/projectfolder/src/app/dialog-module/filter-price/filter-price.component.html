@@ -1,0 +1,60 @@
+<div>
+    <div class="side-header-2">
+        <div class="row">
+            <div class="col-lg-2 col-2">
+                <div class="dialog-back-f" mat-dialog-close>
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+            <div class="col-lg-9 col-9">
+                <div class="text-center">
+                    <h4 class="select-title-h">Filter</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mat-typography p-lg-4 p-2 px-lg-3 px-2">
+    <div class="auth-form-wrapper">
+        <form [formGroup]="filterForm">
+            <div class="filterSection">
+                <h4>Price Range</h4>
+                <div class="w-100 Customrange">
+                    <!-- <label for="disabledRange" class="form-label me-2">SAR 10</label>
+                    <mat-slider min="10" max="1000000">
+                        <input formControlName="startPrice" value="10" (click)="onPriceChange()" matSliderStartThumb>
+                        <input formControlName="endPrice" value="100000" (click)="onPriceChange()" matSliderEndThumb>
+                    </mat-slider>
+                    <label for="disabledRange" class="form-label ms-2">SAR 100000</label>
+                    <span class="inc">inc</span>
+                    <span class="dec">dec</span> -->
+                    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" (userChangeEnd)="onPriceChange(minValue, maxValue)"  [options]="options"></ngx-slider>
+                </div>
+                <div class="mt-lg-3 mt-2">
+                    <h4>Brand</h4>
+                    <div *ngFor="let brand of brandData">
+                        <p>
+                            <mat-checkbox disableRipple=true (change)="onCheckboxChange($event,brand._id)"
+                                [checked]="pushModuleAccess.includes(brand._id)"
+                                [value]="brand._id">{{brand.nameEn}}</mat-checkbox>
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="mt-4">
+                    <h4>Promotion</h4>
+                    <p><mat-checkbox class="example-margin">Buy 1 Get 1</mat-checkbox></p>
+                    <p><mat-checkbox class="example-margin">Flat Rate</mat-checkbox></p>
+                </div>
+            </div>
+            <div class="action-btn mt-3 d-flex align-items-center justify-content-between">
+                <button mat-flat-button color="primary" class="w-100 clearFilter" mat-dialog-close
+                    (click)="clearFilter()">Clear Filter</button>
+                <button mat-flat-button color="primary" class="w-100"
+                    (click)="upadteFilterData()">Apply</button>
+            </div>
+        </form>
+    </div>
+</div>

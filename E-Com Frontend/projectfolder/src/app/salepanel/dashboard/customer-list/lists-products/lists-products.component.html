@@ -1,0 +1,154 @@
+<div class="position-relative listProduct">
+    <div class="buyerPlaceorder">
+        <div class="container-fluid customContainer">
+            <div class="d-flex align-items-center justify-content-between mobile-target">
+                <div class="userBio d-lg-flex d-md-flex d-block align-items-center justify-content-between">
+                    <div class="placeorderUserdetail">
+                        <div class="salesUserimgmain">
+                            <div class="avtar-circle">
+                                <div class="salesUserimg">
+                                    <img *ngIf="patchValueData.profileImg" [src]="patchValueData.profileImg"
+                                    class="img-fluid" />
+                                <img *ngIf="!patchValueData.profileImg" src="assets/image/sales-icon/profile_ic.png"
+                                    class="img-fluid ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="name">
+                            <p>{{patchValueData.name}}</p>
+                            <span>{{patchValueData.userId}}</span>
+                        </div>
+                    </div>
+                    <div class="register-btn common-grid">
+                        <div class="placedUserprofile mt-mg-0 mt-md-0 mt-2">
+                            <div class="salesUserimg">
+                                <img src="assets/image/allicon/user_profie_circle.png" alt="cart" class="img-fluid">
+                            </div>
+                            <div class="user">
+                                <p>Sales Target</p>
+                                <span>Achievement - 500/1000 SAR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button (click)="logOutSalesManUser()" routerLink="/salepanel/dashboard">
+                    <mat-icon><img src="assets/image/logout_customer.png" alt="icon" class="img-fluid pe-2">
+                    </mat-icon>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="product-details-main">
+        <div class="container-fluid">
+            <div class="product-header">
+                <div class="d-flex gap-2 align-items-center">
+                    <img src="assets/image/back_black.png" class="bck-btn"
+                        routerLink="/salepanel/dashboard/customer-list/place-order">
+                    <h3 class="aiwa-title">Product Listing</h3>
+                </div>
+
+                <button class="cmn-button-2">
+                    <img src="assets/image/allicon/filter.png" class="img-fluid" (click)="filterPrice()" />
+                </button>
+            </div>
+
+            <div class="category-panel">
+                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms"
+                    (selectedTabChange)="onCategoryChange($event)">
+                    <mat-tab *ngFor="let item of categoryListData" label={{item.nameEn}}>
+                        <div class="subcategory-pnl">
+                            <div class="text-center align-items-center mt-4" *ngIf="!SubcategoryListData?.length"> No Sub Category</div>
+                            <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms"
+                                (selectedTabChange)="onSubCategoryChange($event)">
+                                <mat-tab *ngFor="let iten of SubcategoryListData" label={{iten.nameEn}}>
+                                    <section class="product-suggestion pb-4 position-relative mt-3">
+                                        <div class="suggestions-lists position-relative">
+                                            <div *ngIf="!productListData.length" class="no-products-message">
+                                                No Products Found
+                                            </div>
+                                            <!-- <div *ngIf="productListData.length > 0"> -->
+
+                                            <div class="grid-box" *ngFor="let i of productListData">
+                                                <div class="product-card" (click)="goToDetailspage(i)">
+                                                    <div class="product-img">
+                                                        <div class="sale-bg"
+                                                            style="background: url('assets/image/allicon/offer-shap.svg');">
+                                                            2 For Sar 35</div>
+                                                        <figure>
+                                                            <img [src]="i.subCatImg[0]" alt="image" class="img-fluid">
+                                                        </figure>
+                                                        <div class="like-btn"
+                                                            *ngIf="i?.SkuLimit >= i?.availableQuantity && i?.availableQuantity>0">
+                                                            <div class="unit-grid">
+                                                                {{ i?.availableQuantity + ' Unit Left' }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="favlike">
+                                                            <img src="assets/image/allicon/un_fav.png" alt="img"
+                                                                class="img-fluid" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                        <div class="title-product">
+                                                            <h4>{{i?.nameEn}}</h4>
+                                                            <div class="p-sar">{{i.sellingPrice}} SAR</div>
+                                                        </div>
+                                                        <div class="p-rating">
+                                                            <div class="p-title">{{i?.brand?.nameEn}}</div>
+                                                        </div>
+                                                        <div class="prd-pnl">
+                                                            <div>
+                                                                <div class="p-title" [ngClass]="{
+                                                                    'text-danger':i?.availableQuantity<1}">
+                                                                    {{i?.availableQuantity ?
+                                                                    '' : 'Out of Stock'
+                                                                    }}
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <button class="btn btn-outline-dark" style="border: 1px solid #F2994A !important;padding: 6px 27px;color: #F36C1C;border-radius: 5px;"
+                                                                    [disabled]="i?.availableQuantity<1" [ngClass]="{
+                                                                            'bg-secondry':i?.availableQuantity<1,
+                                                                            'btn-outline-dark': i?.availableQuantity>0
+                                                                        }">
+                                                                    Add
+                                                                </button>
+                                                                
+                                                                <!-- <div class="addcart">
+                                                                    <div class="btn-1"><img
+                                                                            src="assets/image/allicon/remove.png" alt="add">
+                                                                    </div>
+                                                                    <div>2</div>
+                                                                    <div class="btn-1"><img
+                                                                            src="assets/image/allicon/add.png" alt="add">
+                                                                    </div>
+                                                                </div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div *ngIf="productListData.length <= 0" class="">
+                                                    No Products Found
+                                                </div> -->
+                                            <!-- </div> -->
+                                        </div>
+                                    </section>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="circle-shap"></div>
+</div>

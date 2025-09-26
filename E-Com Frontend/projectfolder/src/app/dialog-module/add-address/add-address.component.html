@@ -1,0 +1,107 @@
+<div class="add-address">
+    <div mat-dialog-title>
+
+        <div class="dialog-back addClose" mat-dialog-close>
+            <i class="bi bi-x-lg"></i>
+        </div>
+    
+        <div class="dialog-logo-img text-center">
+            <h3><strong>Add Address</strong></h3>
+        </div>
+    </div>
+    
+    <section class="product-suggestion dProduct pb-5 position-relative">
+        <div class="container">
+            <form [formGroup]="addressForm">
+                <div class="sales-container">
+                    <div class="custom-auth-input mb-4 address-input">
+                        <mat-label>Address</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter Address" (keydown.enter)="$event.preventDefault()" #search1 formControlName="address">
+                            <!-- <mat-error *ngIf="submitted && f['address'].errors?.['required']">Address is required</mat-error> -->
+                            <!-- <mat-error *ngIf="hasError('address', 'required')">
+                                Address is required
+                              </mat-error> -->
+                          
+                        </mat-form-field>
+                        <div *ngIf="submitted && f['address'].errors" class="text-danger">
+                            <div *ngIf="f['address'].errors['required']">
+                                Address is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-auth-input mb-4">
+                        <mat-label>District</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter District" (keypress)="allowOnlyAlphabets($event)" formControlName="district">
+                        </mat-form-field>
+                        <div *ngIf="submitted && f['district'].errors" class="text-danger">
+                            <div *ngIf="f['district'].errors['required']">
+                                District is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-auth-input  mb-4">
+                        <mat-label>Street Name</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter Street Name" (keypress)="allowOnlyAlphabets($event)" formControlName="streetName">
+                        </mat-form-field>
+                        <div *ngIf="submitted && f['streetName'].errors" class="text-danger">
+                            <div *ngIf="f['streetName'].errors['required']">
+                                Street Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-auth-input  mb-4">
+                        <mat-label>Postal Code (Must Be 5 Digit)</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" maxlength="5" onkeypress="return event.charCode > 47 && event.charCode < 58;" matInput placeholder="Enter Postal Code" formControlName="postalCode">
+                        </mat-form-field>
+                        <div *ngIf="submitted && f['postalCode'].errors" class="text-danger">
+                            <div *ngIf="f['postalCode'].errors['required']">
+                                Postal Code is required
+                            </div>
+                            <div *ngIf="addressForm.get('postalCode')?.errors?.['minlength']" style="color: red;">
+                                Postal Code should be 5 digits
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-auth-input mb-4">
+                        <mat-label>City Name</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" matInput placeholder="Enter City" formControlName="city" (keypress)="allowOnlyAlphabets($event)">
+                            <!-- <mat-error *ngIf="addressForm.controls['city'].errors?.['pattern']">City name must only contain letters</mat-error> -->
+                        </mat-form-field>
+                        <div *ngIf="submitted && f['city'].errors" class="text-danger">
+                            <div *ngIf="f['city'].errors['required']">
+                                City Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-auth-input  mb-4">
+                        <mat-label>Building Number (Must Be 4 Digit)</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text" maxlength="4" onkeypress="return event.charCode > 47 && event.charCode < 58;"   matInput placeholder="Enter Building Number(Optional)" formControlName="buildingNumber">
+                        </mat-form-field>
+                        <div *ngIf="addressForm.get('buildingNumber')?.errors?.['minlength']" style="color: red;">
+                            Building Number should be 4 digits
+                        </div>
+                    </div>
+                    <div class="custom-auth-input  mb-4">
+                        <mat-label>Secondary Number (Must Be 4 Digit)</mat-label>
+                        <mat-form-field class="w-100" appearance="outline">
+                            <input type="text"  maxlength="4"
+                            onkeypress="return event.charCode > 47 && event.charCode < 58;" matInput placeholder="Enter Secondry Number (Optional)" formControlName="secondryNumber">
+                        </mat-form-field>                       
+                        <div *ngIf="addressForm.get('secondryNumber')?.errors?.['minlength']" style="color: red;">
+                            Secondary Number should be 4 digits
+                        </div>
+                    </div>
+                    <div class="action-btn my-3">
+                        <button mat-flat-button color="primary" class=" m-auto w-100" (click)="addAddress()">Add Address</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

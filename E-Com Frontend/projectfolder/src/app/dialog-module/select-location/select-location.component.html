@@ -1,0 +1,64 @@
+<div class="select-channel positioin-relative">
+    <div>
+        <div class="side-header-2">
+            <div class="row">
+                <div class="col-lg-2 col-2">
+                    <div class="dialog-back-f" mat-dialog-close>
+                        <i class="bi bi-x-lg"></i>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-9">
+                    <div class="text-center">
+                        <h4 class="select-title-h">Select Locationfsdfsdf</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="map-fram">
+        <agm-map class="agmMap" [latitude]="lat" [longitude]="lng" style="width: 100%;" [zoom]="12">
+            <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" [agmFitBounds]="true"
+                (dragEnd)="markerDragEnd($event)"></agm-marker>
+        </agm-map>
+        <div class="">
+            <button class="org-btn" (click)="setCurrentLocation()"> 
+                <i class="bi bi-crosshair"></i> Use Current Location</button>
+        </div>
+    </div>
+
+    <div class="mat-typography">
+        <div class="auth-form-wrapper">
+            <div class="bottom-area">
+                <div class="d-flex gap-3 my-5 mb-0 align-items-center location">
+                    <img src="assets/image/allicon/location.png" alt="icon" class="img-fluid">
+                    <div class="d-block">
+                        <span>Your Location</span>
+                        <!-- <p>{{patchAddress}}</p> -->
+                        <div class="customSearch">
+                            <input (keydown.enter)="$event.preventDefault()" matInput class="form-control location-padding" #search
+                                type="text" placeholder="Search Location" onpaste="return false;" ondrop="return false;"
+                                [(ngModel)]="patchAddress">
+                            <!-- <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="Search Location"
+                                (keydown.enter)="$event.preventDefault()" matInput  type="text" onpaste="return false;"
+                                ondrop="return false;" [(ngModel)]="patchAddress"> -->
+                        </div>
+                    </div>
+                </div>
+        
+                
+        
+                <div class="d-flex gap-3 my-3 mb-0 align-items-center" (click)="savedLocation(1)">
+                    <img src="assets/image/allicon/lo_saved.png" alt="icon" class="img-fluid">
+                    <div class="d-block savebtn">
+                        <h4>Select From Saved Addresses</h4>
+                    </div>
+                </div>
+        
+                <div class="action-btn m-2">
+                    <button mat-flat-button color="primary" class="w-100" (click)="close()">Confirm Location</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

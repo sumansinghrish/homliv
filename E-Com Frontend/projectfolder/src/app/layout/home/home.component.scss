@@ -1,0 +1,427 @@
+.slider-banner {
+    height: 460px;
+    background: #eee;
+    overflow: hidden;
+    position: relative;
+}
+
+.topbanner-slider{
+   height: 100%;
+    background: #eee;
+    overflow: hidden;
+    position: relative;
+}
+
+.topbanner-slider img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.topbrand {
+    width: 118px;
+    height: 118px;
+    border: 2px solid #012348;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    cursor: pointer;
+
+    @media screen and (max-width:1201px) {
+        width: 128px;
+        height: 128px;
+    }
+
+    @media screen and (max-width:1025px) {
+        width: 132px;
+        height: 132px;
+    }
+
+    @media screen and (max-width:991px) {
+        width: 132px;
+        height: 132px;
+    }
+
+    @media screen and (max-width:576px) {
+        width: 100px;
+        height: 100px;
+    }
+
+    img {
+        width: 100%;
+         height: 100%;
+    }
+}
+
+.topbrand img {
+   width: 100%;
+    height: 100%;
+}
+.slider-content {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    max-width: 500px;
+    width: 100%;
+}
+.slider-content h1 {
+    font-size: 65px;
+    color: #fff;
+    font-weight: 700;
+}
+.slider-content h1 span {
+    color: #fa783a;
+    font-weight: 600;
+}
+.slider-content sub {
+    color: #fff;
+    margin-left: 10px;
+}
+
+.product-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.product-grid {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.product-bg{
+    background:rgb(255 255 160 / 9%) 0% 0% no-repeat;
+    border-radius: 28px;
+    padding: 10px;
+}
+.categories-box figure {
+    border: 1px solid #70707033;
+    border-radius: 10px;
+    height: 170px;
+    overflow: hidden;
+    background: #fff;
+
+    img {
+        height: 100% !important;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.categories-box {
+    margin: 0px 8px 20px;
+    cursor: pointer;
+    h3 {
+        font-size: 16px;
+        color: #4A4A4A;
+        text-align: center;
+    }
+
+}
+
+.suggestions-lists {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+
+    @media screen and (max-width:768px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .grid-box {
+        margin:0px 8px 30px;
+    }
+    figure {
+        height: 190px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0px;
+        color: #4A4A4A;
+
+        @media screen and (max-width:577px) {
+            font-size: 16px;
+            line-height: 26px;        
+        }
+    }
+
+    .p-title {
+        color: #B7B7B7;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+    .title-product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .p-sar {
+        color: #E03A00;
+        font-weight: 500;
+        font-size: 18px;
+
+        @media screen and (max-width:577px) {
+            font-size: 16px;
+            line-height: 26px;        
+        }
+    }
+    ul {
+        display: flex;
+        color: #F2994A;
+
+        @media screen and (max-width:577px) {
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+    }
+    .p-rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .btn-outline-dark {
+        padding: 6px 27px;
+        border: 1px solid #F2994A;
+        color: #F36C1C;
+        border-radius: 5px;
+        background-color: #fff;
+        font-weight: 600;
+    }
+    .btn-outline-dark:hover {
+        background: #F2994A;
+        color: #fff !important;
+    }
+    figure img {
+        height: 80%;
+        width: 80%;
+        object-fit: contain;
+    }
+    
+}
+
+.product-img{
+    position: relative;
+    background: #ffffff6b;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    .unit-grid {
+        position: absolute;
+        bottom: 10px;
+        background: #E03A0026 0% 0% no-repeat;
+        border-radius: 5px;
+        color: #E03A00;
+        font-size: 13px;
+        padding: 4px 9px;
+    }
+}
+
+// .product-suggestion:after {
+//     background: transparent linear-gradient(90deg, #E03A00 0%, #FF8445 100%) 0% 0% no-repeat;
+//     border-radius: 1442px 0px 0px 0px;
+//     height: 100ch;
+//     opacity: 0.1;
+//     position: absolute;
+//     right: 0;
+//     content: '';
+//     display: block;
+//     z-index: -1;
+//     top: -19%;
+//     width: 65%;
+// }
+
+.grid-bg-back{
+    background: transparent linear-gradient(90deg, #E03A00 0%, #FF8445 100%) 0% 0% no-repeat;
+    border-radius: 1442px 0px 0px 0px;
+    height: 100ch;
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    top: -19%;
+    width: 65%;
+}
+
+.aiwa-title{
+    color: #012348;
+    font-size: 29px;
+}
+
+.whatsapp-icon {
+    position: fixed;
+    right: 13px;
+    z-index: 999;
+    bottom: 30px;
+}
+.whatsapp-icon  img{
+    height: 50px;
+}
+
+@media screen and (max-width:1367px) {
+    .padding-40{
+        padding-bottom: 0px;
+    }
+    .slider-banner {
+        height: 235px;
+    }
+    .slider-content h1 {
+        font-size: 45px !important;
+    }
+}
+
+@media (max-width: 1024px) { 
+    .container-fluid {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .suggestions-lists {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .slider-content h1 {
+      font-size: 3.3rem;
+      color: #fff;
+    }
+    .slider-banner {
+        height: 350px;
+    }
+    
+  
+}
+
+@media (min-width: 992px) and (max-width:1440px) { 
+    .suggestions-lists{
+        h4 {
+            font-size: 15px;
+            margin-bottom: 0px
+        }
+        .p-sar {
+            font-size: 13px;
+        }
+        .p-title{
+            font-size: 12px;
+        }
+        figure{
+            height: 190px;
+        }
+        .unit-grid {
+            font-size: 10px;
+        }
+        figure img {
+            height: 70%;
+            width: 75%;
+            object-fit: contain;
+        }
+    
+        .favlike img {
+            height: 17px;
+        }
+        
+    }
+
+    .product-bg {
+        padding: 0px;
+    }
+    .aiwa-title {
+        padding: 0px 15px;
+        font-size: 25px;
+    }
+
+    .categories-box h3 {
+        font-size: 14px;
+    }
+    .categories-box figure {
+        height: 140px;
+    }
+    .slider-banner {
+        height: 300px;
+    }
+    .slider-content h1{
+        font-size: 55px;
+    }
+    
+}
+
+@media (max-width:767px){
+    .suggestions-lists {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        margin: 0px;
+    }
+    .slider-content {
+        left: 5%; 
+    }
+    .topbrand {
+        margin: auto;
+    }
+    .suggestions-lists .title-product{
+        flex-direction: column;
+    }
+    .p-rating {
+        flex-direction: column;
+        justify-content: center;
+
+    }
+  
+    .slider-content h1 {
+        font-size: 40px;
+        color: #fff;
+    }
+    .product-suggestion:after{
+        display: none;
+    }
+    .product-bg {
+        padding: 0px;
+    }
+    .aiwa-title {
+        font-size: 20px;
+    }
+    .view-Btn {
+        font-size: 16px;
+        margin: 0px;
+    }
+    .slider-banner {
+        height: 280px;
+    }
+    .padding-20 {
+        padding: 10px 0px;
+    }
+
+}
+
+@media screen and (max-width:576px) {
+    .product-card{
+        text-align: center;
+    }
+
+    .container-fluid{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .slider-content h1 {
+        font-size: 35px !important;
+    }
+
+    .slider-banner {
+        height: 200px;
+    }
+}

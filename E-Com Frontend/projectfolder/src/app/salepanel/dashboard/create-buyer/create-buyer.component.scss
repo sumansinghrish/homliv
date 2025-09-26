@@ -1,0 +1,129 @@
+.file-upload {
+    position: relative;
+}
+
+.file-upload input[type=file] {
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.file-upload input {
+    opacity: 0;
+    // position: absolute;
+    // z-index: 999999;
+    // top: 0px;
+    // left: 1px;
+    // height: 40px;
+    // width: 46px;
+    // cursor: pointer;
+}
+
+h6 small{color:red;}
+
+.file-upload {
+    width: 100%;
+    height: 170px;
+    padding: 0px;
+    border: 1px dashed #ccc;
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cameradiv{
+    position: absolute;
+    top: 10px;
+    height: 82%;
+    width: 100%;
+    left: 3px;
+}
+// .file-upload img {
+//     height: 100%;
+//     width: 100%;
+// }
+
+// .cameradiv {
+//     position: absolute;
+//     left: 43%;
+//     bottom: 40px;
+//     text-align: center;
+// }
+
+
+// .img img {
+//     height: 145px;
+//     width: 245px;
+//     border-radius: 1rem;
+// }
+
+.imgupl {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.upimg {
+    display: block;
+    font-size: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.bck-btn {
+    height: 20px;
+    width: 10px;
+    cursor: pointer;
+}
+
+.logo-name {
+    font-size: 13px;
+    display: block;
+    text-align: center;
+
+}
+
+.sales-container {
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+}
+
+.profile-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    outline: 2px solid #fde8dc;
+}
+.profile-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.select-profile-picture {
+    width: 40px;
+    opacity: 0;
+}
+.camera-ic img {
+    height: 50px;
+    position: absolute;
+    right: 0;
+    width: 50px;
+    bottom: 17px;
+}

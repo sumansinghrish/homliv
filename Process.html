@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Work - Homliv Interior Design</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #4CAF50;
+            --secondary-green: #66BB6A;
+            --accent-orange: #FF6B35;
+            --dark-blue: #2C3E50;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: transparent;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: var(--accent-orange) !important;
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.25rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-green);
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .page-title h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* Hero Section with Process Images */
+        .hero-process {
+            padding: 2rem 0 4rem;
+        }
+
+        .process-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .process-title {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Process Steps Section */
+        .process-steps {
+            padding: 4rem 0;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+            position: relative;
+            height: 180px;
+        }
+
+        .step-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta-title {
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .btn-cta {
+            background: var(--accent-orange);
+            border: none;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Trusted By Section */
+        .trusted-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .trusted-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .brand-row {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo {
+            height: 50px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            margin: 0 1rem;
+        }
+
+        .brand-logo:hover {
+            opacity: 1;
+        }
+
+        /* Family Image Section */
+        .family-section {
+            padding: 3rem 0;
+        }
+
+        .family-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .family-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-green);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h5 {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .newsletter-section h4 {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .newsletter-form {
+            margin-bottom: 2rem;
+        }
+
+        .footer .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .footer .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-orange);
+            color: white;
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+        }
+
+        .btn-subscribe {
+            background: var(--accent-orange);
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .btn-subscribe:hover {
+            background: #e55a2b;
+            color: white;
+        }
+
+        .contact-info-footer {
+            margin-bottom: 2rem;
+        }
+
+        .footer-social-links {
+            margin: 2rem 0;
+        }
+
+        .footer-social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-bottom-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom-info span {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom-info i {
+            margin-right: 0.5rem;
+        }
+
+        .footer-bottom-links {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .process-card {
+                padding: 1.5rem;
+            }
+
+            .process-image {
+                height: 150px;
+            }
+
+            .step-card {
+                height: auto;
+                min-height: 160px;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .brand-logo {
+                height: 40px;
+                margin: 0.5rem;
+            }
+
+            .footer-bottom-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .family-image img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">HOMLIV</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="process.html">How We Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex flex-column flex-lg-row">
+                    <a href="#login" class="btn btn-outline-light">LOG IN</a>
+                    <a href="#signup" class="btn btn-outline-light">GET STARTED</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>HOW WE WORK</h1>
+        </div>
+    </section>
+
+    <!-- Hero Process Section -->
+    <section class="hero-process">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="process-card">
+                        <div class="process-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Connect with designers">
+                        </div>
+                        <h3 class="process-title">Connect with one of our talented designers for inspiration.</h3>
+                        <p class="process-description">Start your design journey by connecting with our experienced interior designers who will understand your vision.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="process-card">
+                        <div class="process-image">
+                            <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Collaborate with designer">
+                        </div>
+                        <h3 class="process-title">Collaborate directly with your designer to craft your ideal space.</h3>
+                        <p class="process-description">Work hand-in-hand with your designer to bring your dream space to life with personalized touches.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="process-card">
+                        <div class="process-image">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bring design home">
+                        </div>
+                        <h3 class="process-title">Bring your design home with ease.</h3>
+                        <p class="process-description">Enjoy a seamless experience as we help you implement your design with professional installation and support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps Section -->
+    <section class="process-steps">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4 class="step-title">Initial Consultation</h4>
+                        <p class="step-description">Begin by introducing us to your space and sharing your vision. We'll discuss your style preferences and requirements.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 class="step-title">Project Discovery</h4>
+                        <p class="step-description">We work closely with you to understand your lifestyle and create the perfect design plan.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <h4 class="step-title">Quality Control</h4>
+                        <p class="step-description">We ensure design standards are met and deliver high-quality results that exceed expectations.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4 class="step-title">Material Selection</h4>
+                        <p class="step-description">Choose from our curated selection of premium materials and finishes for your project.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <div class="step-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h4 class="step-title">Concept Development</h4>
+                        <p class="step-description">We create detailed design concepts and 3D visualizations to bring your vision to life.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4 class="step-title">Project Completion</h4>
+                        <p class="step-description">We manage quality assurance and final touches to ensure your complete satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">7</div>
+                        <div class="step-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="step-title">Post Pro Support</h4>
+                        <p class="step-description">Our continued service ensures your space remains beautiful and functional long after completion.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">8</div>
+                        <div class="step-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h4 class="step-title">Ease of Access</h4>
+                        <p class="step-description">Enjoy easy access to our services and support whenever you need assistance with your space.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to start your design journey?</h2>
+            <button class="btn btn-cta">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-section">
+        <div class="container">
+            <h3 class="trusted-title">TRUSTED BY</h3>
+            
+            <div class="brand-row">
+                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=JASPER+ONLINE" alt="Jasper Online" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Cup+and+Highlight" alt="Cup and Highlight" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=N" alt="Brand N" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Millssy" alt="Millssy" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Peppermint" alt="Peppermint" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Pixie+Labs" alt="Pixie Labs" class="brand-logo">
+                </div>
+            </div>
+            
+            <div class="brand-row">
+                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=N" alt="Brand N" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Pixie+Labs" alt="Pixie Labs" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Peppermint" alt="Peppermint" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Millssy" alt="Millssy" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=JASPER+ONLINE" alt="Jasper Online" class="brand-logo">
+                    <img src="https://via.placeholder.com/120x50/333333/FFFFFF?text=Cup+and+Highlight" alt="Cup and Highlight" class="brand-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Image Section -->
+    <section class="family-section">
+        <div class="container">
+            <div class="family-image">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Happy family in their designed home">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-brand">HOMINT</div>
+                    <p class="footer-subtitle">Visit Help Center</p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Our offerings</a></li>
+                            <li><a href="#">Newsroom</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Our team</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Cart</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h5>Our Brands</h5>
+                        <ul>
+                            <li><a href="#">Interior Define</a></li>
+                            <li><a href="#">The Inside</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h5>Locations</h5>
+                        <ul>
+                            <li><a href="#">Karachi</a></li>
+                            <li><a href="#">Lahore</a></li>
+                            <li><a href="#">Downtown</a></li>
+                            <li><a href="#">Austria</a></li>
+                            <li><a href="#">Manchester</a></li>
+                            <li><a href="#">London</a></li>
+                            <li><a href="#">Istanbul</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-12 mb-4">
+                    <div class="newsletter-section">
+                        <h4>Get to know more about us and everything we do.</h4>
+                        <form class="newsletter-form">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                            <input type="email" class="form-control" placeholder="Your Email Address">
+                            <button type="submit" class="btn btn-subscribe">Subscribe</button>
+                        </form>
+                        <div class="contact-info-footer">
+                            <p>reach@homint.com</p>
+                            <p>(629) 555-0129</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-info">
+                    <span><i class="fas fa-globe"></i> English</span>
+                    <span><i class="fas fa-map-marker-alt"></i> San Francisco Bay Area</span>
+                </div>
+                
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Terms</a>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2023 Homint Designers Inc.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.process-card, .step-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

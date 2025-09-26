@@ -1,0 +1,136 @@
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0px;
+
+    .aiwa-title {
+        font-size: 25px;
+        margin-bottom: 0px;
+    }
+    .bck-btn {
+        height: 25px;
+       cursor: pointer;
+    }
+    .cmn-button-2 {
+        border: none;
+    }
+    .cmn-button-2 img {
+        height: 50px;
+    }
+}
+.category-panel{
+    padding: 20px 0px 70px;
+}
+
+.suggestions-lists .thumb-g {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+
+    @media screen and (max-width:576px) {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .grid-box {
+        margin:0px 8px 30px;
+    }
+    figure {
+        height: 190px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0px;
+        color: #4A4A4A;
+    }
+  
+    .p-title {
+        color: #B7B7B7;
+        font-size: 0.95rem;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+    .title-product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .p-sar {
+        color: #E03A00;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    ul {
+        display: flex;
+        color: #F2994A;
+    }
+    .p-rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .btn-outline-dark {
+        padding: 6px 27px;
+        border: 1px solid #F2994A;
+        color: #F36C1C;
+        border-radius: 5px;
+        background-color: #fff;
+        font-weight: 600;
+    }
+    .btn-outline-dark:hover {
+        background: #F2994A;
+        color: #fff !important;
+    }
+    figure img {
+        // height: 80%;
+        // width: 80%;
+        object-fit: contain;
+        height: 100%;
+    }
+    .product-img {
+        position: relative;
+        background: rgba(255,255,255,.4196078431);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .unit-grid {
+        position: absolute;
+        bottom: 10px;
+        background: rgba(224,58,0,.1490196078) 0% 0% no-repeat;
+        border-radius: 5px;
+        color: #e03a00;
+        font-size: 13px;
+        padding: 4px 9px;
+    }
+    
+}
+
+@media (max-width:767px) {
+    .product-header .aiwa-title {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+    .product-header .cmn-button-2 img {
+        height: 36px;
+    }
+    .product-header .bck-btn {
+        height: 19px;
+        cursor: pointer;
+    }
+
+
+}
+
+.mat-mdc-slider .mat-ripple .mat-mdc-slider-focus-ripple{
+    background-color: none;;
+}

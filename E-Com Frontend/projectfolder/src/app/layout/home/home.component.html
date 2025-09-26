@@ -1,0 +1,250 @@
+<section class="home-header">
+  <div class="container-fluid-2">
+    <div class="row g-0">
+      <div class="col-lg-8 col-md-7">
+        <owl-carousel-o [options]="homeBanner">
+          <!-- <ng-template carouselSlide>
+            <div class="slider-banner">
+              <div class="topbanner-slider">
+                <img src="assets/image/banner-1.jpg" alt="banner" class="img-fluid">
+              </div>
+              <div class="slider-content">
+                <h1>Get <br><span>30%<sub>off</sub></span> <br>on Food</h1>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="slider-banner">
+              <div class="topbanner-slider">
+                <img src="assets/image/banner-2.png" alt="banner" class="img-fluid">
+              </div>
+              <div class="slider-content">
+                <h1>Get <br><span>30%<sub>off</sub></span> <br>on Food</h1>
+              </div>
+            </div>
+          </ng-template> -->
+          <ng-template carouselSlide *ngFor="let slide of sliderimage">
+            <div class="slider-banner">
+              <div class="topbanner-slider">
+                <img [src]="slide.image" class="img-fluid">
+              </div>
+              <div class="slider-content">
+                <!-- <h1>Get <br><span>30%<sub>off</sub></span> <br>on Food</h1> -->
+                <!-- <h1>Get <br><span>{{slide.discount}}<sub>off</sub></span> <br>on {{slide.product}}</h1> -->
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+      <div class="col-lg-4 col-md-5">
+        <div class="banner-thumb slider-banner">
+          <div class="topbanner-slider">         
+            <img [src]="bannerimage" alt="banner" class="img-fluid">
+          </div>
+          <div class="slider-content">
+            <!-- <h1>Get <br><span>20%<sub>off</sub></span><br> on Fruits</h1> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="top-category padding-40">
+  <div class="container-fluid">
+    <div class="topProduct-row">
+      <owl-carousel-o [options]="topProduct">
+       
+        <ng-template carouselSlide *ngFor="let item of brandData">
+          <div class="topbrand" (click) = "goToProductList(item?._id)">
+            <img [src]="item.brandImg" alt="banner" class="img-fluid">
+          </div>
+          <!-- {{item?.nameEn}} -->
+        </ng-template>
+     
+
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+
+<section class="products-categories">
+  <div class="container-fluid">
+    <div class="product-bg">
+      <div class="product-header">
+        <h3 class="aiwa-title">Categories</h3>
+        <div class="view-Btn" routerLink="/all-category">View All Category</div>
+      </div>
+
+      <!-- <div class="product-grid">
+        <div class="categories-box" routerLink="/home/categories-detail">
+          <figure>
+            <img src="assets/image/weekly_promotions.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>Weekly Promotions</h3>
+          </figcaption>
+        </div>
+
+        <div class="categories-box" routerLink="/product-lists">
+          <figure>
+            <img src="assets/image/buy_one_get_one.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>gotoweeklyproduct
+            <h3>Buy 1 Get 1</h3>
+          </figcaption>
+        </div>
+        <div class="categories-box" routerLink="/product-lists">
+          <figure>
+            <img src="assets/image/flat_rate.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>Flat Rate</h3>
+          </figcaption>
+        </div>
+      </div> -->
+
+      <div class="product-grid">
+        <!-- <div class="categories-box">
+          <figure>
+            <img src="assets/image/weekly_promotions.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>Weekly Promotions</h3>
+          </figcaption>
+        </div>
+
+        <div class="categories-box">
+          <figure>
+            <img src="assets/image/buy_one_get_one.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>gotoweeklyproduct
+            <h3>Buy 1 Get 1</h3>
+          </figcaption>
+        </div>
+        <div class="categories-box">
+          <figure>
+            <img src="assets/image/flat_rate.png" alt="image" class="img-fluid">
+          </figure>
+          <figcaption>
+            <h3>Flat Rate</h3>
+          </figcaption>
+        </div> -->
+
+        <div class="categories-box"  *ngFor="let item of categoryListData">
+          <figure (click)="gotoweeklyproduct(item?.id)">{{item?.id}}
+            <img [src]="item.catImg" alt="image" class="img-fluid" >
+          </figure>
+          <figcaption>
+            <h3>{{item.nameEn}}</h3>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-suggestion pb-4 position-relative" *ngIf="suggestedProductData.length">
+  <div class="grid-bg-back d-none"></div>
+
+  <div class="container-fluid">
+    <div class="mb-2 padding-20">
+      <h3 class="aiwa-title">Product Suggestions</h3>
+    </div>
+
+    <div class="suggestions-lists ">
+      <div class="grid-box" *ngFor="let products of suggestedProductData; let i = index;">
+        <!-- <div class="product-card" *ngFor="let product of products.product; let j = index;" > -->
+            <div class="product-img"(click)="goToDetailspage(products)">
+                <div class="sale-bg" style="background: url('./assets/image/allicon/offer-shap.svg');">
+                    2 For Sar 35
+                </div>
+                <figure>
+                    <img [src]="products.subCatImg[0]" alt="image" class="img-fluid">
+                </figure>
+                <div class="like-btn">
+                    <div class="unit-grid">{{products?.availableQuantity}} Unit Left</div>
+                </div>
+                <div class="favlike">
+                    <img src="assets/image/allicon/un_fav.png" alt="img">
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="title-product">
+                    <h4>{{products.nameEn}}</h4>
+                    <div class="p-sar">{{products.sellingPrice}} SAR</div>
+                </div>
+
+                <div class="p-rating">
+                    <div class="p-title">{{products.brand.nameEn}}</div>
+                </div>
+
+                <div class="prd-pnl">
+                    <div>
+                        <div class="p-title">6 Units</div>
+                    </div>
+                    <button class="btn btn-outline-dark">Add</button>
+                </div>
+
+            </div>
+        </div>
+    <!-- </div> -->
+
+
+    </div>
+
+  </div>
+</section> 
+<!-- <section class="product-suggestion pb-4 position-relative" *ngIf="suggestedProductData.length">
+  <div class="container-fluid">
+      <div class="mb-2 padding-20">
+          <h3 class="aiwa-title">Product Suggestions</h3>
+      </div>
+      <div class="suggestions-lists">
+          <div class="grid-box" *ngFor="let products of suggestedProductData; let i = index;">
+              <div class="product-card" *ngFor="let product of products.product; let j = index;">
+                  <div class="product-img">
+                      <div class="sale-bg" style="background: url('./assets/image/allicon/offer-shap.svg');">
+                          2 For Sar 35
+                      </div>
+                      <figure>
+                          <img [src]="product.subCatImg[0]" alt="image" class="img-fluid">
+                      </figure>
+                      <div class="like-btn">
+                          <div class="unit-grid">{{product.availableQuantity}} Unit Left</div>
+                      </div>
+                      <div class="favlike">
+                          <img src="assets/image/allicon/un_fav.png" alt="img">
+                      </div>
+                  </div>
+
+                  <div class="card-body">
+                      <div class="title-product">
+                          <h4>{{product.nameEn}}</h4>
+                          <div class="p-sar">{{product.sellingPrice}} SAR</div>
+                      </div>
+
+                      <div class="p-rating">
+                          <div class="p-title">{{product.brand.nameEn}}</div>
+                      </div>
+
+                      <div class="prd-pnl">
+                          <div>
+                              <div class="p-title">6 Units</div>
+                             
+                          </div>
+                          <button class="btn btn-outline-dark">Add</button>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section> -->
+
+<a href="#" class="whatsapp-icon">
+  <img src="assets/image/allicon/whatsapp.png" alt="whatsapp-icon" class="img-fluid">
+</a>

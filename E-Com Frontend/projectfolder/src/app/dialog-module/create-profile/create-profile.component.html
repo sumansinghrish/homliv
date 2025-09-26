@@ -1,0 +1,64 @@
+<div mat-dialog-title>
+
+    <div class="dialog-back" mat-dialog-close>
+        <i class="bi bi-x-lg"></i>
+    </div>
+
+    <div class="dialog-logo-img text-center">
+        <img src="assets/image/pop_up_logo.png" alt="logo" class="img-fluid">
+    </div>
+</div>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="createprofile">
+        <div class="auth-form-wrapper">
+            <div class="auth-head">
+                <h4>Create Profile</h4>
+            </div>
+
+            <div class="custom-auth-input  mb-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Business Name</mat-label>
+                    <input type="text" matInput formControlName="businessName" (keypress)="onKeyPress($event)">
+                </mat-form-field>
+                <div *ngIf="submitted && f['businessName'].errors" class="text-danger">
+                    <div *ngIf="f['businessName'].errors['required']">
+                        Business Name is required
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="custom-auth-input mb-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Full Name <span>(Optional)</span></mat-label>
+                    <input type="text" matInput formControlName="name" (keypress)="onKeyPress($event)">
+                </mat-form-field>
+                <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                    <div *ngIf="f['name'].errors['required']">
+                        Name is required
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="custom-auth-input mb-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Email Address <span>(Optional)</span></mat-label>
+                    <input type="text" matInput formControlName="email">
+                </mat-form-field>
+                <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                    <div *ngIf="f['email'].errors['required']">
+                        Email is required
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="action-btn mt-2">
+                <button mat-flat-button color="primary" class="w-100" mat-dialog-close
+                    (click)="onSubmit()">Next</button>
+
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>

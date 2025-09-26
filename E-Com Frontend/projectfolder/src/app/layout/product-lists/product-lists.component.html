@@ -1,0 +1,125 @@
+<div class="product-details-main">
+    <div class="container-fluid">
+      <div class="product-header">
+        <div class="d-flex gap-2 align-items-center">
+          <img src="assets/image/back_black.png" class="bck-btn" routerLink="/home">
+          <h3 class="aiwa-title">Product Listing</h3>
+        </div>
+        <button class="cmn-button-2">
+          <img src="assets/image/allicon/filter.png" class="img-fluid" (click)="filterPrice()" />
+        </button>
+      </div>
+      <div *ngIf="!usrefilterproductlist" class="category-panel">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms" [selectedIndex]="selectedCategoryIndex" (selectedTabChange)="onCategoryChange($event)">
+          <mat-tab *ngFor="let item of categoryListData; let i = index" [label]="item.nameEn">
+            <div class="subcategory-pnl">
+              <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms" (selectedTabChange)="onSubCategoryChange($event)">
+                <mat-tab *ngFor="let iten of SubcategoryListData" [label]="iten.nameEn" [id]="item._id">
+                  <section class="product-suggestion pb-4 position-relative mt-3">
+                    <div class="suggestions-lists">
+                      <div *ngIf="productListData?.length === 0" class="no-products-message">
+                        No Products Found
+                    </div>
+                    <div  *ngIf="productListData?.length > 0" class="thumb-g">
+                      <div class="grid-box" *ngFor="let i of productListData">
+                        <div class="product-card" (click)="goToDetailspage(i)">
+                          <div class="product-img">
+                            <div class="sale-bg" style="background: url('assets/image/allicon/offer-shap.svg');">
+                              2 For Sar 35
+                            </div>
+                            <figure>
+                              <!-- <img [src]="i.brand.brandImg" alt="image" class="img-fluid"> -->
+                              <img [src]="i.subCatImg[0]" alt="image" class="img-fluid">
+                              
+
+                            </figure>
+                            <div class="like-btn">
+                              <div class="unit-grid">{{i?.SkuLimit}}  Unit Left</div>
+                            </div>
+                            <div class="favlike">
+                              <img src="assets/image/allicon/un_fav.png" alt="img">
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="title-product">
+                              <h4>{{i.nameEn}}</h4>
+                              <div class="p-sar">{{i.sellingPrice}} SAR</div>
+                            </div>
+                            <!-- <div class="p-rating">
+                              <div class="p-title">{{i.nameEn}}</div>
+                            </div> -->
+                            <div class="p-rating">
+                              <div class="p-title">{{i?.brand?.nameEn}}</div>
+                            </div>
+                            <div class="prd-pnl">
+                              <div>
+                                <div class="p-title">{{i?.availableQuantity}}  Units</div>
+                              </div>
+                              <div>
+                                <button class="btn btn-outline-dark">Add</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
+      <section *ngIf="usrefilterproductlist" class="product-suggestion pb-4 position-relative mt-3">
+        <div class="suggestions-lists">
+          <div *ngIf="productListData?.length === 0" class="no-products-message">
+            No Products Found
+        </div>
+        <div  *ngIf="productListData?.length > 0" class="thumb-g">
+          <div class="grid-box" *ngFor="let i of productListData">
+            <div class="product-card" (click)="goToDetailspage(i)">
+              <div class="product-img">
+                <div class="sale-bg" style="background: url('assets/image/allicon/offer-shap.svg');">
+                  2 For Sar 35
+                </div>
+                <figure>
+                  <!-- <img [src]="i.brand.brandImg" alt="image" class="img-fluid"> -->
+                  <img [src]="i.subCatImg[0]" alt="image" class="img-fluid">
+                  
+
+                </figure>
+                <div class="like-btn">
+                  <div class="unit-grid">{{i?.SkuLimit}}  Unit Left</div>
+                </div>
+                <div class="favlike">
+                  <img src="assets/image/allicon/un_fav.png" alt="img">
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="title-product">
+                  <h4>{{i?.brand?.nameEn}}</h4>
+                  <div class="p-sar">{{i.sellingPrice}} SAR</div>
+                </div>
+                <div class="p-rating">
+                  <div class="p-title">{{i.nameEn}}</div>
+                </div>
+                <div class="prd-pnl">
+                  <div>
+                    <div class="p-title">{{i?.availableQuantity}}  Units</div>
+                  </div>
+                  <div>
+                    <button class="btn btn-outline-dark">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  

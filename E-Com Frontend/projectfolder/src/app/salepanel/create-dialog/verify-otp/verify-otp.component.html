@@ -1,0 +1,38 @@
+<div mat-dialog-title>
+
+    <div class="dialog-back" mat-dialog-close>
+        <i class="bi bi-x-lg"></i>
+    </div>
+
+    <div class="dialog-logo-img text-center">
+        <img src="assets/image/pop_up_logo.png" alt="logo" class="img-fluid">
+    </div>
+</div>
+<mat-dialog-content class="mat-typography">
+
+    <div class="auth-form-wrapper">
+        <div class="auth-head">
+            <h4 class="mb-4">Verify Mobile Number</h4>
+            <p>4 Digit OTP Has Been Sent To Your New Mobile Number <span class="primary"></span></p>
+        </div>
+
+
+        <div class="custom-auth-input mb-3">
+            <label>Enter OTP</label>
+            <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="{length:4}" appOnlynumber
+                onkeypress="return event.charCode > 47 && event.charCode < 58;"></ng-otp-input>
+        </div>
+        <div class="text-center mb-3">
+            <span *ngIf="counter !== 0" class="text-danger ms-1"><span class="btn-res"></span>
+                00:{{getCounterData(counter)}} Sec</span>
+        </div>
+        <div class="account-bt d-flex justify-content-center" *ngIf="!showTimer && counter <= 0">
+            <p>Didn't receive OTP?</p>
+            <div class="resend ms-1" (click)="resendOtp()" [class.disabled]="otpButtonDisabled">Resend OTP</div>
+        </div>
+        <div class="action-btn">
+            <button mat-flat-button color="primary" class="w-100" (click)="OtpVerfy()">Proceed</button>
+        </div>
+    </div>
+
+</mat-dialog-content>

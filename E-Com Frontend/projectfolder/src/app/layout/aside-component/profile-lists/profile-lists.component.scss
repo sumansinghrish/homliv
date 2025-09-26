@@ -1,0 +1,27 @@
+.aside-tabs {
+    background: #FFFFFF 0% 0% no-repeat;
+    box-shadow: inset 0px 0px 6px #00000029;
+    border: 1px solid #70707033;
+    border-radius: 7px;
+    padding: 20px;
+    
+    @media screen and (max-width:576px) {
+        width:100%;
+    }
+
+    li {
+        background: #0123480D 0% 0% no-repeat;
+        border-radius: 8px;
+        padding: 17px;
+        margin: 0px 0px 15px;
+    }
+    li.active {
+        background:#F36C1C;
+        color: #fff;
+    }
+    li:hover {
+        background:#F36C1C;
+        color: #fff;
+        cursor: pointer;
+    }
+}

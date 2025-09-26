@@ -1,0 +1,30 @@
+
+.profile-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    outline: 2px solid #fde8dc;
+
+    @media screen and (max-width:576px) {
+        height:100px;
+        width:100px;
+    }
+}
+.profile-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.select-profile-picture {
+    width: 40px;
+    opacity: 0;
+}
+.camera-ic img {
+    height: 50px;
+    position: absolute;
+    right: 0;
+    width: 50px;
+    bottom: 17px;
+}

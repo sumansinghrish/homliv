@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Decor - Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 50%, #81C784 100%);
+            position: relative;
+        }
+
+        /* Decorative circles */
+        .main-container::before,
+        .main-container::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #FF8A65, #FFB74D);
+            z-index: 1;
+        }
+
+        .main-container::before {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            right: 15%;
+        }
+
+        .main-container::after {
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            right: 10%;
+        }
+
+        .curved-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 1;
+        }
+
+        .curved-decoration::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            width: 60%;
+            height: 300px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: rotate(-15deg);
+        }
+
+        .navbar {
+            background: transparent !important;
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .navbar-brand:hover {
+            color: #FFE0B2 !important;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 5;
+            min-height: calc(100vh - 100px);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE0QTRBO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2QTZBNkE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgogIDwhLS0gQmVkIC0tPgogIDxyZWN0IHg9IjEwMCIgeT0iMjAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzNBM0EzQSIgcng9IjEwIi8+CiAgPHJlY3QgeD0iMTIwIiB5PSIxODAiIHdpZHRoPSIzNjAiIGhlaWdodD0iNDAiIGZpbGw9IiM1MDUwNTAiIHJ4PSI1Ii8+CiAgPCEtLSBQaWxsb3dzIC0tPgogIDxyZWN0IHg9IjE0MCIgeT0iMTUwIiB3aWR0aD0iNjAiIGhlaWdodD0iNDAiIGZpbGw9IiM2MDYwNjAiIHJ4PSI1Ii8+CiAgPHJlY3QgeD0iMjIwIiB5PSIxNTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI0MCIgZmlsbD0iIzZBNkE2QSIgcng9IjUiLz4KICA8IS0tIFdpbmRvdyAtLT4KICA8cmVjdCB4PSI0MDAiIHk9IjUwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE2MCIgZmlsbD0iIzJBMkEyQSIgcng9IjUiLz4KICA8cmVjdCB4PSI0MTAiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzQwNDA0MCIgcng9IjMiLz4KICA8IS0tIEZsb29yIC0tPgogIDxyZWN0IHg9IjAiIHk9IjM1MCIgd2lkdGg9IjYwMCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzJBMkEyQSIvPgo8L3N2Zz4=') center/cover;
+            min-height: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            color: white;
+            padding: 40px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight {
+            color: #FF8A65;
+            text-decoration: underline;
+            text-decoration-color: #FF8A65;
+            text-decoration-thickness: 3px;
+        }
+
+        .login-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px 40px;
+            color: white;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .login-subtitle {
+            font-size: 1rem;
+            color: #B0B0B0;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px !important;
+            padding: 15px 20px !important;
+            color: white !important;
+            font-size: 1rem !important;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: #FF8A65 !important;
+            box-shadow: 0 0 0 0.2rem rgba(255, 138, 101, 0.25) !important;
+            color: white !important;
+        }
+
+        .form-control::placeholder {
+            color: #B0B0B0 !important;
+        }
+
+        .form-check {
+            margin-bottom: 30px;
+        }
+
+        .form-check-input {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .form-check-input:checked {
+            background-color: #FF8A65 !important;
+            border-color: #FF8A65 !important;
+        }
+
+        .form-check-label {
+            color: #B0B0B0;
+            font-size: 0.95rem;
+        }
+
+        .btn-login {
+            background: white !important;
+            color: #333 !important;
+            border: none !important;
+            padding: 15px 30px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 1.1rem !important;
+            width: 100%;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: #f5f5f5 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-link {
+            text-align: center;
+            color: #B0B0B0;
+            font-size: 0.95rem;
+        }
+
+        .register-link a {
+            color: #FF8A65;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .login-title {
+                font-size: 2rem;
+            }
+
+            .hero-content,
+            .login-section {
+                padding: 30px 20px;
+            }
+
+            .main-container::before {
+                width: 80px;
+                height: 80px;
+                top: 5%;
+                right: 10%;
+            }
+
+            .main-container::after {
+                width: 60px;
+                height: 60px;
+                bottom: 10%;
+                right: 5%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .login-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-arrow-left me-2"></i>Homepage
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-9">
+                        <div class="hero-section">
+                            <div class="row g-0">
+                                <!-- Left Side - Hero Content -->
+                                <div class="col-lg-6">
+                                    <div class="hero-image">
+                                        <div class="hero-overlay"></div>
+                                        <div class="hero-content">
+                                            <h1 class="hero-title">
+                                                Make Your<br>
+                                                <span class="highlight">Home</span> Cozy,<br>
+                                                Bring Comfort,<br>
+                                                Style Home.
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right Side - Login Form -->
+                                <div class="col-lg-6">
+                                    <div class="login-section">
+                                        <h2 class="login-title">Login</h2>
+                                        <p class="login-subtitle">
+                                            Welcome back, we are glad you're feeling beautiful today. Login to continue
+                                        </p>
+
+                                        <form>
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control" placeholder="Email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="password" class="form-control" placeholder="Password" required>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="remember">
+                                                <label class="form-check-label" for="remember">
+                                                    Remember me
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-login">Login</button>
+                                        </form>
+
+                                        <div class="register-link">
+                                            Don't have an account? <a href="#">Register</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="curved-decoration"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

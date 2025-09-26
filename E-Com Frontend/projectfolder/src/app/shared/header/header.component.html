@@ -1,0 +1,400 @@
+<nav *ngIf="(isUserPartner || selerData )&& !selerData?.salesManId"
+  class="navbar mobileNavbar navbar-expand-lg bg-light" [ngClass]="{'normalHeader' : true, 'sticky' : isSticky}">
+  <div class="container-fluid d-lg-flex d-md-flex d-none">
+    <!-- d-lg-flex d-md-flex d-none -->
+    <a class="navbar-brand" href="#">
+      <div class="logo">
+        <img src="assets/image/aiwa_logo.png" alt="logo" class="img-fluid">
+      </div>
+    </a>
+    <!-- d-lg-none d-md-block d-none -->
+    <button class="navbar-toggler d-lg-none d-md-block d-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
+        <li class="nav-item location-header">
+
+          <mat-form-field appearance="fill" (click)="selectLocation(selerData.address)">
+            <mat-label><img src="assets/image/allicon/current_location.png">Delivery Location</mat-label>
+            <select matNativeControl>
+              <option>{{deliveryAddressdata ? deliveryAddressdata : deliveryaddress}}</option>
+              <!-- <option>{{selerData?.address?.address ? selerData?.address?.address : deliveryaddress}}</option> -->
+              <!-- <option value="option1" selected>Street St. Maria, Sect...</option> -->
+            </select>
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill" (click)="selectLocation()">
+            <mat-label><img src="assets/image/allicon/current_location.png">Delivery Location</mat-label>
+            <select matNativeControl>
+              <option value="option1" selected>Street St. Maria, Sect...</option>
+            </select>
+          </mat-form-field> -->
+        </li>
+        <li class="nav-item se-header">
+          <div class="search-header">
+            <div class="search-input position-relative">
+              <i class="bi bi-search"></i>
+              <input type="search" class="form-control w-100" placeholder="Search Product" (keyup)="searchproduct($event)">
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="header-panel">
+
+        <div class="cart-btn common-grid" routerLink="/addcartuser">
+          <div *ngIf="!cartDataItemCount2" class="demo-section">
+            <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+          </div>
+
+          <div *ngIf="cartDataItemCount2>0" [matBadge]="cartDataItemCount2" matBadgeOverlap="false"
+            class="demo-section">
+            <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+          </div>
+        </div>
+<!-- 
+        <div class="cart-btn common-grid" routerLink="/addcart">
+          <div class="demo-section">
+            <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+          </div>
+        </div> -->
+
+        <div class="cart-btn common-grid" *ngIf="hideShowRegisterButton">
+          <img src="assets/image/allicon/achievement.png" alt="cart" class="img-fluid">
+        </div>
+
+        <div class="select-Lang common-grid" *ngIf="!hideShowRegisterButton">
+          <mat-form-field appearance="fill">
+            <mat-select class="select-lang" [(value)]="selected" [ngClass]="selected" panelClass="bg-lang">
+              <mat-select-trigger>
+                <img src="{{ selected.icon }}" class="img-lang" />
+                {{ selected.name }}
+              </mat-select-trigger>
+              <mat-option *ngFor="let item of allItems" [value]="item">
+                <img src="{{ item.icon }}" class="img-lang" /><span> {{item.name}}</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="saller-header cardBadge">
+          <div class="select-Lang common-grid" *ngIf="hideShowRegisterButton">
+            <mat-form-field appearance="fill">
+              <mat-select class="en-circle" [(value)]="selected2" [ngClass]="selected2" panelClass="bg-lang">
+                <mat-select-trigger>
+                  <img src="{{ selected2.icon }}" class="img-lang" />
+                </mat-select-trigger>
+                <mat-option *ngFor="let item of sallerItems" [value]="item">
+                  <img src="{{ item.icon }}" class="img-lang" /><span></span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="register-btn common-grid">
+          <button *ngIf="!hideShowRegisterButton" mat-button (click)="loginDialog('500ms' , '500ms')"><img
+              src="assets/image/profile.png" alt="cart" class="img-fluid"> Register</button>
+          <button mat-button [matMenuTriggerFor]="menu" *ngIf="hideShowRegisterButton"><img
+              src="assets/image/sales-icon/profile_ic.png" alt="cart" class="img-fluid">Hi, {{selerData?.name}}
+            <span></span></button>
+        </div>
+
+        <div class="sale-box common-grid">
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/profile">
+              <mat-icon><img src="assets/image/sales-icon/profile.png" alt="icon" class="img-fluid">
+              </mat-icon>
+              <span>Profile</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon><img src="assets/image/sales-icon/my_notifications.png" alt="icon" class="img-fluid">
+              </mat-icon>
+              <span>Notifications</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon><img src="assets/image/sales-icon/customer_feedback.png" alt="icon" class="img-fluid">
+              </mat-icon>
+              <span>Customer Feedback</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon><img src="assets/image/sales-icon/my_orders.png" alt="icon" class="img-fluid">
+              </mat-icon>
+              <span>My Orders</span>
+            </button>
+            <button mat-menu-item (click)="logout1()">
+              <mat-icon><img src="assets/image/sales-icon/logout.png" alt="icon" class="img-fluid">
+              </mat-icon>
+              <span>Logout</span>
+            </button>
+
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="mobileHeaderpanel d-lg-none">
+    <div class="w-100">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <a class="" href="#">
+          <div class="logo">
+            <img src="assets/image/aiwa_logo.png" alt="logo" class="img-fluid">
+          </div>
+        </a>
+        <div class="header-panel mobileCardbadge cardBadge">
+          <div class="cart-btn m-0 common-grid" matBadge="4" matBadgeOverlap="false" class="demo-section">
+            <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+          </div>
+
+          <div class="cart-btn common-grid" *ngIf="hideShowRegisterButton">
+            <img src="assets/image/allicon/achievement.png" alt="cart" class="img-fluid">
+          </div>
+
+          <div class="select-Lang common-grid my-0 mx-2">
+            <mat-form-field appearance="fill">
+              <mat-select class="select-lang" [(value)]="selected" [ngClass]="selected" panelClass="bg-lang">
+                <mat-select-trigger>
+                  <img src="{{ selected.icon }}" class="img-lang" />
+                  {{ selected.name }}
+                </mat-select-trigger>
+                <mat-option *ngFor="let item of allItems" [value]="item">
+                  <img src="{{ item.icon }}" class="img-lang" /><span> {{item.name}}</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="register-btn m-0 common-grid">
+            <button *ngIf="!hideShowRegisterButton" mat-button (click)="loginDialog('500ms' , '500ms')"><img
+                src="assets/image/profile.png" alt="cart" class="img-fluid"> Register</button>
+            <button mat-button [matMenuTriggerFor]="menu" *ngIf="hideShowRegisterButton"><img
+                src="assets/image/sales-icon/profile_ic.png" alt="cart" class="img-fluid">Hi, {{selerData?.name}}
+              <span></span></button>
+          </div>
+
+          <div class="sale-box common-grid">
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/profile">
+                <mat-icon><img src="assets/image/sales-icon/profile.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/my_notifications.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Notifications</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/customer_feedback.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Customer Feedback</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/my_orders.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>My Orders</span>
+              </button>
+              <button mat-menu-item (click)="logout1()">
+                <mat-icon><img src="assets/image/sales-icon/logout.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Logout</span>
+              </button>
+
+            </mat-menu>
+          </div>
+        </div>
+
+      </div>
+      <div class="d-flex align-items-center justify-content-between">
+        <ul class="">
+          <li class="nav-item location-header">
+            <mat-form-field appearance="fill" (click)="selectLocation(selerData.address)">
+              <mat-label><img src="assets/image/allicon/current_location.png">Delivery Location</mat-label>
+              <select matNativeControl>
+                <option value="option1" selected>Street St. Maria, Sect...</option>
+              </select>
+            </mat-form-field>
+          </li>
+          
+        </ul>
+        <div class="nav-item se-header">
+          <div class="search-header">
+            <div class="search-input position-relative ms-2">
+              <i class="bi bi-search"></i>
+              <input type="search" class="form-control w-100" placeholder="Search Product">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-------------------  seller person ------------------------>
+
+<nav *ngIf="isUserPartner && selerData?.salesManId" class="navbar navbar-expand-lg bg-light"
+  [ngClass]="{'normalHeader' : true, 'sticky' : isSticky}">
+  <div class="container-fluid d-lg-flex d-md-flex d-none">
+    <!-- d-lg-flex d-md-flex d-none -->
+    <a class="navbar-brand">
+      <div class="logo">
+        <img src="assets/image/aiwa_logo.png" alt="logo" class="img-fluid">
+      </div>
+    </a>
+    <!-- d-lg-none d-md-block d-none -->
+    <button class="navbar-toggler d-lg-none d-md-block d-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="header-middle">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 header-space"></ul>
+
+        <div class="header-panel saller-header cardBadge">
+          <div class="cart-btn common-grid" *ngIf="customerProfile" routerLink="/addcart">
+            <div *ngIf="!cartDataItemCount" class="demo-section">
+              <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+            </div>
+
+            <div *ngIf="cartDataItemCount>0" [matBadge]="cartDataItemCount" matBadgeOverlap="false"
+              class="demo-section">
+              <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+            </div>
+          </div>
+
+          <div class="select-Lang common-grid">
+            <mat-form-field appearance="fill">
+              <mat-select class="en-circle" [(value)]="selected2" [ngClass]="selected2" panelClass="bg-lang">
+                <mat-select-trigger>
+                  <img src="{{ selected2.icon }}" class="img-lang" />
+                </mat-select-trigger>
+                <mat-option *ngFor="let item of sallerItems" [value]="item">
+                  <img src="{{ item.icon }}" class="img-lang" /><span></span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="register-btn common-grid">
+            <button mat-button [matMenuTriggerFor]="menu"><img src="assets/image/sales-icon/profile_ic.png" alt="cart"
+                class="img-fluid"> Hi, <span>{{this.selerData.name ? this.selerData.name : 'User'}}</span></button>
+          </div>
+          <div class="sale-box common-grid">
+            <mat-menu #menu="matMenu" panelClass="userdropdown">
+              <button mat-menu-item routerLink="/salepanel/sales-porfile">
+                <mat-icon><img src="assets/image/sales-icon/profile.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/my_notifications.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Notifications</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/customer_feedback.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Customer Feedback</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/my_orders.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>My Orders</span>
+              </button>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon><img src="assets/image/sales-icon/logout.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Logout</span>
+              </button>
+
+            </mat-menu>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobileSeler d-lg-none">
+    <div class="">
+      <div class="header-middle">
+        <a class="">
+          <div class="logo">
+            <img src="assets/image/aiwa_logo.png" alt="logo" class="img-fluid">
+          </div>
+        </a>
+        <div class="header-panel saller-header cardBadge" >
+          <div class="cart-btn common-grid" routerLink="/addcart" *ngIf="customerProfile">
+            <div *ngIf="!cartDataItemCount" class="demo-section">
+              <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+            </div>
+
+            <div *ngIf="cartDataItemCount>0" [matBadge]="cartDataItemCount" matBadgeOverlap="false"
+              class="demo-section">
+              <img src="assets/image/kart.svg" alt="cart" class="img-fluid">
+            </div>
+          </div>
+
+          <div class="select-Lang common-grid">
+            <mat-form-field appearance="fill" class="bg-lang2">
+              <mat-select class="en-circle" [(value)]="selected2" [ngClass]="selected2" panelClass="bg-lang">
+                <mat-select-trigger class="mobile-img-lang">
+                  <img src="{{ selected2.icon }}" class="img-lang" />
+                </mat-select-trigger>
+                <mat-option *ngFor="let item of sallerItems" [value]="item"  class="mobile-lang-change">
+                  <img src="{{ item.icon }}" class="img-lang mobile-img-lang" /><span></span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="register-btn common-grid">
+            <button mat-button [matMenuTriggerFor]="menu"><img src="assets/image/sales-icon/profile_ic.png" alt="cart"
+                class="img-fluid"> Hi, <span>{{this.selerData.name ? this.selerData.name : 'User'}}</span></button>
+          </div>
+          <div class="sale-box common-grid">
+            <mat-menu #menu="matMenu" panelClass="userdropdown">
+              <button mat-menu-item routerLink="/salepanel/sales-porfile">
+                <mat-icon><img src="assets/image/sales-icon/profile.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/my_notifications.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Notifications</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/customer_feedback.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Customer Feedback</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon><img src="assets/image/sales-icon/my_orders.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>My Orders</span>
+              </button>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon><img src="assets/image/sales-icon/logout.png" alt="icon" class="img-fluid">
+                </mat-icon>
+                <span>Logout</span>
+              </button>
+
+            </mat-menu>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

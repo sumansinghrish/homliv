@@ -1,0 +1,9 @@
+
+<div class="banner-offer" *ngIf="showdata">
+    <div class="close-btn" mat-dialog-close (click)="reloadPage()">
+        <img src="assets/image/allicon/close.png" alt="offer" class="img-fluid">
+    </div>
+    <div class="show-offer">
+         <img [src]="bannerimage" alt="offer" class="img-fluid">
+    </div>
+</div>
